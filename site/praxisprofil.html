@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="de-DE">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Home | Ergotherapie Küchmeister</title>
+        <link rel="stylesheet" href="../src/css/style.css">
+        <link rel="stylesheet" href="../src/css/style-praxisprofil.css">
+        <link rel="shortcut icon" href="../src/img/website/favicon.ico">
+    </head>
+    <body>
+        <div class="gradient">
+            <span class="cookie-btn" id="cookiebtn">
+                <img src="../src/img/website/cookie.png" alt="cookie" class="cookie-btn-img" id="cookie_popup_img" onclick="cookiePopup()">
+                <div class="cookie_text">
+                    <p>Unsere Website verwendet technisch notwendige
+                    <br>Cookies, um Ihre Nutzung der Website zu verbessern.
+                    <br>Diese Cookies können nicht deaktiviert werden. </p>
+                    <a href="cookies.html" style="color: #09B397;">Mehr Infos</a>
+                </div>
+            </span>
+            <div class="desktop-nav">
+                <div class="desktop-nav-content">
+                    <img src="../src/img/website/logo-wide.png" alt="Logo" class="logo">
+                    <h1 class="title">ErgoTherapie<br>Michael Küchmeister</h1>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="praxisprofil.html" onclick="cardreset()" style="color: #09B397;">Praxisprofil</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="impressum.html">Impressum</a></li>
+                    </ul>
+                    <div class="mode-switch mode-switch-desktop">
+                        <button onclick="toggleTheme()" class="square-button" id="themebutton"><img id="lightmodeicon" src="../src/img/website/sonne.png" alt="modeicon"></button>
+                    </div>
+                </div>
+                <div class="mobile-nav-content"> <!--Mobile NAV-->
+                    <div class="mobile-nav-buttons">
+                        <div class="mode-switch mode-switch-mobile" style="display: inline-block">
+                            <button onclick="toggleThemeMobile()" class="square-button" id="themebutton-mobile"><img id="lightmodeicon-mobile" src="../src/img/website/sonne.png" alt="modeicon"></button>
+                        </div>
+                        <div class="menu-drop" style="display: inline-block;">
+                            <button onclick="hamburger()" class="square-button" id="menubutton"><img id="menuicon" src="../src/img/website/menu.png" alt="menuicon"></button>
+                        </div>
+                    </div>
+                        <ul id="mobilenav">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="praxisprofil.html" style="color: #09B397" onclick="cardreset()">Praxisprofil</a></li>
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="news.html">News</a></li>
+                            <li><a href="kontakt.html">Kontakt</a></li>
+                            <li><a href="impressum.html">Impressum</a></li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+            <div class="site-content">
+                <h1 class="welcome">Praxisprofil</h1>
+                <div class="profil_container">
+                    <div class="profil_img_box mobile_center_card" id="card_saeuglinge" style="z-index: 26">
+                        <a onclick="Saeuglinge()">
+                            <img src="../src/img/profil/main/saeuglinge.png" alt="saeuglinge">
+                            <p>Säuglinge</p>
+                        </a>
+                    </div>
+                    <div class="profil_img_box" id="card_kleinkinder" style="z-index: 25">
+                        <a onclick="Kleinkinder()">
+                            <img src="../src/img/profil/main/kleinkinder.png" alt="kleinkinder">
+                            <p>Kleinkinder</p>
+                        </a>
+                    </div>
+                    <div class="profil_img_box" id="card_schulkinder" style="z-index: 24;">
+                        <a onclick="Schulkinder()">
+                            <img src="../src/img/profil/main/schulkinder.png" alt="schulkinder">
+                            <p>Schulkinder</p>
+                        </a>
+                    </div>
+                    <div class="profil_img_box" id="card_praevention" style="z-index: 23">
+                        <a onclick="Praevention()">
+                            <img src="../src/img/profil/main/praevention.png" alt="praevention">
+                            <p>Prävention</p>
+                        </a>
+                    </div>
+                    <div class="profil_img_box" id="card_beratung" style="z-index: 22">
+                        <a onclick="Beratung()">
+                            <img src="../src/img/profil/main/beratung.png" alt="beratung" style="width: 112px; padding-left: 9px !important; padding-right: 9px !important;"> <!-- extra style because of dif size -->
+                            <p>Beratung</p>
+                        </a>
+                    </div>
+                    <div class="profil_img_box" id="card_lernwerkstatt" style="z-index: 21">
+                        <a onclick="Lernwerkstatt()">
+                            <img src="../src/img/profil/main/lernwerkstatt.png" alt="lernwerkstatt" class="imgbox_lightup">
+                            <p>Lernwerkstatt</p>
+                        </a>
+                    </div>
+                    <div class="profil_img_box" id="card_erwachsene" style="z-index: 20">
+                        <a onclick="Erwachsene()">
+                            <img src="../src/img/profil/main/erwachsene.png" alt="erwachsene" class="imgbox_lightup">
+                            <p>Erwachsene</p>
+                        </a>
+                    </div>
+                </div>
+                <div id="topic-content">
+                    <h1 class="topics-startalert" id="startalert"style="text-align: center !important;">Wähle eine Kategorie aus...</h1>
+                    <div class="topic-content" id="content-saeuglinge" style="display: none;">
+                        <h3 class="topic-content-header" style="color:#4ec4ff" id="scrollAnker-saeuglinge">Säuglingstherapie</h3>
+                        <p>Die Eltern-Kind-Interaktion hat  in den ersten Lebensmonaten einen besonders prägenden Einfluss auf das Verhalten und die Entwicklung  Ihres Kindes.</p>
+                        <p>Bei “schwierigen" Säuglingen fällt Eltern oftmals eine angemessene Verhaltenssteuerung schwer, so dass diese  Kinder bereits im ersten Lebensjahr durch zusätzliche Regulations- und  Interaktionsschwierigkeiten auffallen.</p>
+                        <h2>Wir bieten in unserer Praxis frühe präventive und therapeutische Maßnahmen an:</h2>
+                        <ul>
+                            <li>Schrei-, Fütter- und Schlafberatung</li>
+                            <li>Beratung bei verzögertem Erreichen der Grenzsteine der  Entwicklung, z.B. Bauchlage, Kopfkontrolle, Krabbeln...</li>
+                            <li>Hilfe bei Haltungsanomalien, z.B. Überstrecken, Liegen auf Lieblingsseiten</li>
+                            <li>Sensorische Integrationstherapie: Befund und therapeutische Optionen im ersten Lebensjahr</li>
+                            <li>Neurophysiologische Behandlung nach dem Bobath-Konzept</li>
+                            <li>Beratung bei frühen Interaktionsstörungen</li>
+                            <li>Anleitung zum Handling</li>
+                            <li>Anleitung bei Körperkontaktproblemen</li>
+                            <li>Elternschulung, z.B. Umgang mit dem Kind, Verstehen des Kindes, Spielberatung...</li>
+                        </ul>
+                    </div>
+                    <div class="topic-content" id="content-kleinkinder" style="display: none;">
+                        <h3 class="topic-content-header" style="color: #83a818;" >Kleinkinder - Kindergartenkinder</h3>
+                        <p><strong>Wenn die Wahrnehmungsaufnahme, -verarbeitung und -vernetzung gestört ist...</strong></p>
+                        <p>Im Kleinkindalter und Kindergartenalter können durch gezielte Förderung und Beratung rasch Entwicklungsfortschritte erzielt werden.</p>
+                        <div class="inline-img">
+                            <img src="../src/img/profil/kleinkinder-img1.jpg" alt="kl-img-1">
+                            <ul>
+                                <li>...verzögert sich das Erreichen der motorischen Meilensteine (Krabbeln, Laufen..), auch bei (drohender) Behinderung.</li>
+                                <li>...zeigen sich Kinder in ihrer Bewegungslust eingeschränkt oder bewegungsängstlich.</li>
+                                <li>...sind Kinder überempfindlich oder unterempfindlich bei Berührung, Bewegung, Geräuschen und wehren Körperkontakt ab.</li>
+                                <li>... ist das Kind überwach, zeigt Schlafstörungen, ist ein “Schreikind”.</li>
+                                <li>...zeigt das Kind Einnässen, Einkoten, Essprobleme, Trinkprobleme.</li>
+                                <li>...zeigt das Kind Trennungsangst.</li>
+                            </ul>
+                        </div>
+                        <div class="inline-img">
+                            <img src="../src/img/profil/kleinkinder-img2.jpg" alt="kl-img-2">
+                            <ul>
+                                <li>...zeigt das Kind sich zappelig, unorganisiert und hat eine schlechte Gefahreneinschätzung.</li>
+                                <li>...sind häufig Tagträumereien zu beobachten.</li>
+                                <li>...entwickelt das Kind zu wenig Selbstständigkeit in Alltagshandlungen (z.B. An- und Ausziehen).</li>
+                                <li>...spielt es nicht ausdauernd, wechselt oft das Spielangebot.</li>
+                                <li>...wird es  schnell wütend, aggressiv, kann nicht verlieren.</li>
+                                <li>...ist es unorganisiert.</li>
+                                <li>...hat es wenig Freunde, weil es fraglichen Umgang mit anderen Kindern zeigt (Hauen, Angst...).</li>
+                                <li>...zeigt es abweichendes Verhalten in der KiTa, in Gruppensituationen.</li>
+                                <li>...zeigt es Bewegungsauffälligkeiten.</li>
+                                <li>...zeigt es Verzögerungen in der Malentwicklung und einen ungeschickten Werkzeuggebrauch, z.B. Schere.</li>
+                                <li>...zeigt es eine schwache Umsetzung sprachlicher Anweisungen.</li>
+                            </ul>
+                        </div>
+                        <h2>Wir bieten in unserer Praxis an:</h2>
+                        <ul>
+                            <li>Sensorische Integrationstherapie</li>
+                            <li>Motorisch funktionelle Behandlung</li>
+                            <li>Neurophysiologische Behandlung nach dem Bobath-Konzept</li>
+                            <li>Förderung der Handgeschicklichkeit</li>
+                            <li>Marburger Konzentrationstraining</li>
+                            <li>Beratung zur Förderung Ihres Kindes im häuslichen Alltag</li>
+                            <li>Hilfsmittelberatung</li>
+                            <li>Beratung bei der Arbeitsplatzgestaltung / Spielumfeldberatung / Spielzeugberatung</li>
+                        </ul>
+                    </div>
+                    <div class="topic-content" id="content-schulkinder" style="display: none;">
+                        <h3 class="topic-content-header" style="color: #0b7f88;">Schulkinder</h3>
+                        <p><strong>Wenn die Wahrnehmungsaufnahme, -verarbeitung und -vernetzung gestört ist...</strong></p>
+                        <div class="inline-img">
+                            <img src="../src/img/profil/schulkinder-img1.jpg" alt="sk-img-1">
+                            <ul>
+                                <li>...kann sich das Kind nicht konzentrieren, ist ablenkbar, zappelig und stört den Unterricht.</li>
+                                <li>...neigt das Kind in der Schule zu Flüchtigkeitsfehlern und arbeitet unsorgfätig.</li>
+                                <li>...ist das Kind unorganisiert und vergesslich.</li>
+                                <li>...ist das Kind verträumt, arbeitet sehr langsam und bekommt im Unterricht Anweisungen nicht mit.</li>
+                                <li>...hängt das Kind schlapp auf seinem Stuhl und wirkt antriebsarm.</li>
+                                <li>...ist das Kind in seinen Bewegungen ungeschickt und bewegungsängstlich.</li>
+                                <li>...kommt das Kind nicht in den Lernprozess hinein.</li>
+                                <li>...hat das Kind oftmals Konflikte mit anderen Kindern.</li>
+                                <li>...akzeptiert das Kind schulische Regeln nicht.</li>
+                                <li>...entwickelt das Kind Schulangst und Lernblockaden.</li>
+                                <li>...verbessern sich trotz Nachhilfe die Schulleistungen nicht nachhaltig.</li>
+                            </ul>
+                        </div>
+                        <div class="inline-img-reverse">
+                            <img src="../src/img/profil/schulkinder-img2.jpg" alt="sk-img-2">
+                            <ul>
+                                <li>...hat das Kind feinmotorische Probleme (Fädeln, Knöpfen...)</li>
+                                <li>...hat das Kind graphomotorische Probleme und hält den Stift nicht korrekt, verkrampft sich beim Schreiben, hat einen zu hohen oder zu schwachen Schreibdruck, trifft die Linien nicht, hält Wortgrenzen nicht ein.</li>
+                                <li>Oder ist das Kind linkshändig und muss noch eine angemessene Schreibhaltung entwickeln?</li>
+                            </ul>
+                        </div>
+                        <div class="inline-img">
+                            <img src="../src/img/profil/schulkinder-img3.jpg" alt="sk-img-3">
+                            <ul>
+                                <li>... kann das Kind bei einer  auditive Verarbeitungs- und/ oder Wahrnehmungsstörung (AVWS)  Laute, Silben und Reime nicht erkennen, Geräusche nicht lokalisieren und Gehörtes nicht zeitgleich verarbeiten. Eine genaue Befunderhebung ist notwendig, um eine AVWS zu einer Aufmerksamkeitsstörung und einer Tonusregulationsstörung abzugrenzen.</li>
+                            </ul>
+                        </div>
+                        <h2>Unsere Angebote für Sie:</h2>
+                        <ul>
+                            <li>Individuelle, ressourcenorientierte Behandlung von Aufmerksamkeitsproblemen und Schwierigkeiten der Selbstorganisation</li>
+                            <li>Behandlung von motorischen Koordinationsstörungen nach dem CO-OP-Ansatz</li>
+                            <li>Neurophysiologische Behandlungsansätze</li>
+                            <li>Sensorische Integrationstherapie</li>
+                            <li>Graphomotorisches Training</li>
+                            <li>Händigkeitsberatung</li>
+                            <li>Arbeitsplatzanpassung, Hilfsmittelberatung</li>
+                            <li>Training der Hörwahrnehmung und -verarbeitung</li>
+                            <li>Zusammenarbeit mit der Schule und anderen Einrichtungen, Teilnahme an Hilfeplangesprächen</li>
+                            <li>Gruppenprogramme bezüglich sozialer Kompetenzen, Aufmerksamkeit, der Malentwicklung und der Graphomotorik</li>
+                        </ul>
+                    </div>
+                    <div class="topic-content" id="content-praevention" style="display: none;">
+                        <h3 class="topic-content-header" style="color: #0064d7;">Prävention</h3>
+                        <p><strong>Wenn die Wahrnehmungsaufnahme, -verarbeitung und -vernetzung gestört ist...</strong></p>
+                        <div class="inline-img">
+                            <img src="../src/img/profil/praevention-img1.jpg" alt="pv-img-1">
+                            <ul>
+                                <li>Der Einstieg in das Schulleben ist für Kinder ein Lebensabschnitt voller  Veränderungen. Sie müssen sich in neuer Umgebung von den Eltern lösen,  neue Regeln einhalten, konzentriert und selbstständig arbeiten und  eigene Bedürfnisse zurückstecken lernen.</li>
+                                <li>Es gibt Kindern Sicherheit, wenn sie schon vor dem Eintritt in die Schule auf den veränderten Alltag vorbereitet werden.</li>
+                                <li>Mit den Kursen Fit für die Schule haben wir ein Vorschultraining konzipiert, in dem grundlegende Fähigkeiten für den Schulalltag gefördert werden:</li>
+                            </ul>
+                        </div>
+                        <h2 style="color:#0064d7;">Wir unterscheiden dabei fünf Förderbereiche:</h2>
+                        <div class="numberlist">
+                            <ol>
+                                <li>Selbstvertrauen, Ich-Stärke (sich in fremder Umgebung orientieren, Erfolge für sich erleben)</li>
+                                <li>Sozialverhalten (abwarten und verzichten lernen, Regeln beachten, zuhören und  aufeinander zugehen, sich in fremder Gemeinschaft wahrnehmen)</li>
+                                <li>Körperbeherrschung/ Grob- und Feinmotorik (den Stift richtig halten und führen und den  Umgang mit der Schere lernen, eine angemessene Arbeitshaltung am Tisch  einnehmen)</li>
+                                <li>Wahrnehmen, hören und lauschen (zielgerichtet Geräusche wahrnehmen, spielerisch  mit Lauten, Silben und Reimen auseinandersetzen, Sprache bewusst hören)</li>
+                                <li>Selbstständiges Arbeitsverhalten, eigene Organisation (die Konzentrationsfähigkeit über länger werdende Zeiträume steigern, Arbeitsanweisungen verstehen und  selbstständig umsetzen)</li>
+                            </ol>
+                        </div>
+                        <h2 style="color:#0064d7; margin-bottom: 0;">Zu jedem Förderbereich bieten wir einen separaten Kurs an. Rahmenbedingungen je Kurs:</h2>
+                        <p style="margin-bottom: 40px; margin-top: 7px; ">Kursumfang:  5 Einheiten à  45 Minuten sowie ein Elternabend · Teilnehmer: 3 Kinder · Kosten: 100 € incl. Material</p>
+                        <h2 style="color:#0064d7; font-size: 140%;">Ergotherapeutisches Training sozial-emotionaler Kompetenzen für Kinder im Vor- und Grundschulalter</h2>
+                        <h2 style="color:#0064d7; margin-bottom: 0;">Zielgruppe:</h2>
+                        <p style="margin-top: 7px;">Das Training sozial-emotionaler Kompetenzen ist geeignet für Kinder, die im Alltag Schwierigkeiten im sozio- emotionalen Bereich haben, z.B.  häufig in Konflikte geraten oder Angst vor neuen Situationen haben.
+                    Die Mitarbeit der Eltern ist zwingende Voraussetzung für den Erfolg des Trainings.</p>
+                        <h1 style="color:#0064d7; margin-bottom: 0;""><u>Rahmenbedingungen:</u></h1>
+                        <h2 style="color:#0064d7; margin-bottom: 0;">Kursumfang:</h2>
+                        <p style="margin-top: 7px;">10 Therapieeinheiten zunächst in der Einzelsituation, 1 x wöchentlich<br>
+                    min. 6 Kurseinheiten Gruppensituation à 75- 90 Minuten, 1x wöchentlich<br>
+                    1 Elternabend sowie 1 individuelle Elternberatung</p>
+                        <h2 style="color:#0064d7; margin-bottom: 0;">Kursumfang:</h2>
+                        <ul style="margin-top: 7px;">
+                            <li>10 Therapieeinheiten zunächst in der Einzelsituation, 1 x wöchentlich</li>
+                            <li>min. 6 Kurseinheiten Gruppensituation à 75- 90 Minuten, 1x wöchentlich</li>
+                            <li>1 Elternabend sowie 1 individuelle Elternberatung</li>
+                        </ul>
+                        <h2 style="color:#0064d7; margin-bottom: 0;">Teilnehmer:</h2>
+                        <ul style="margin-top: 7px; margin-bottom: 40px;">
+                            <li>Kinder im Grundschulalter, maximal 4 / Gruppe</li>
+                            <li>Die Gruppen werden von 2 Therapeutinnen geleitet, die Erfahrung in der Gruppentherapie haben und speziell geschult sind.</li>
+                            <li>Die Kosten werden von den Krankenkassen bei Verordnung durch den Arzt übernommen.</li>
+                            <li>Es ist auch möglich, die Kosten privat zu tragen. Sie richten sich dann nach dem aktuellen Kassensatz.</li>
+                        </ul>
+                        <div class="inline-img">
+                            <img src="../src/img/profil/praevention-img2.jpg" alt="pv-img-2" style="  margin-right: 20px; width: 150px; height: auto; max-width: 100%; border-radius: 40%;">
+                            <h2 style="color:#0064d7; font-size: 140%;">MKT - Marburger Konzentrationstraining</h2>
+                        </div>
+                        <p>Das Marburger Konzentrationstraining ist gedacht für Kinder und Jugendliche</p>
+                        <ul>
+                            <li>die ihre Konzentration und Aufmerksamkeit,</li>
+                            <li>ihre Lerntechniken</li>
+                            <li>ihr impulsives Arbeits- und Lernverhalten</li>
+                            <li>und ihr Selbstwertgefühl und Selbstbewusstsein verbessern wollen.</li>
+                        </ul>
+                        <h2 style="color:#0064d7;">Ziele des Trainings:</h2>
+                        <p>Das Marburger Konzentrationstraining ist gedacht für Kinder und Jugendliche</p>
+                        <ul>
+                            <li>genaues Arbeiten</li>
+                            <li>systematischer Arbeitsstil</li>
+                            <li>verbesserte Leistungsbereitschaft</li>
+                            <li>erhöhte Selbstständigkeit</li>
+                        </ul>
+                        <h2 style="color:#0064d7;">Ablauf des Trainings:</h2>
+                        <p>Das MKT beruht auf der Methode der verbalen Selbstinstruktion. Die Kinder  lernen, eine Aufgabe schrittweise zu bearbeiten. Die einzelnen Schritte werden während der Ausführung zunächst laut mitgesprochen. Das laute Mitsprechen wird dann nach und nach in inneres Sprechen umgewandelt. Die Anleiter des Trainings haben dabei die Aufgabe, das Zielverhalten  modellhaft vorzuführen und das Kind entsprechend der Lernfortschritte zu loben. Neben dem Lob bekommt das Kind für jeden Erfolg Punkte, die sich später in Preise umwandeln lassen. Beide Belohnungssysteme dienen der  positiven Verstärkung, wodurch das Kind das erwünschte Verhalten als richtig und angenehm erlebt. Die Aufgaben im Training sind kindgerecht spielerisch angelegt.</p>
+                        <h1 style="color:#0064d7; margin-bottom: 0;""><u>Rahmenbedingungen:</u></h1>
+                        <h2 style="color:#0064d7">Kursumfang:</h2>
+                        <ul>
+                            <li>6 Gruppentrainings je 60 Minuten</li>
+                            <li>1 Elternabend</li>
+                            <li>Im Rahmen des Elterntrainings werden den Eltern ein häusliches Übungsprogramm und weitere Tipps für den Alltag vorgestellt, um den Lernprozess der Kinder erfolgreich zu unterstützen.</li>
+                        </ul>
+                        <h2 style="color:#0064d7">Gruppengröße:</h2>
+                        <p>max. 4 Kinder</p>
+                        <h2 style="color:#0064d7">Gruppenzusammensetzung:</h2>
+                        <ul>
+                            <li>MKT für Kindergartenkinder</li>
+                            <li>MKT für Schulkinder</li>
+                            <li>MKT für Jugendliche</li>
+                            <li>Das MKT ist ohne ausdrückliche ärztliche Verordnung keine Kassenleistung und muss daher von den Eltern selbst gezahlt werden.</li>
+                        </ul>
+                    </div>
+                    <div class="topic-content" id="content-beratung" style="display: none;">
+                    <h3 class="topic-content-header" style="color: #ff9500;">Beratung</h3>
+                        <h2>Triple-P</h2>
+                        <div class="inline-img">
+                            <img src="../src/img/profil/beratung-img1.jpg" alt="bt.img1">
+                            <ul>
+                                <li>Um durch eine ergotherapeutische Behandlung nachhaltige Erfolge erzielen  zu können, ist in den meisten Fälllen eine intensive Elternberatung schon immer von besonderer Bedeutung gewesen, so dass die Elternarbeit in  unserer Praxis stets ein Baustein erfolgreicher Therapie gewesen ist.</li>
+                                <li>Darüber hinaus erscheint in manchen Fällen die <div style="color:#ff9500; margin: 0; display: inline;">Beratung des Umfeldes</div> des Kindes (Kindergarten, Schule) unerlässlich: Vor dem Hintergrund,  die Therapiezeiten für ein Kind so effektiv wie möglich nutzen zu wollen und die Gesamtdauer der Therapie somit zu reduzieren, ist der Austausch von Informationen über ein Kind in seinen unterschiedlichen sozialen  Bezügen für die Diagnostik bedeutsam, ebenso kann eine Beratung  hinsichtlich des Verhaltens oder motorischer Defizite erfolgen.</li>
+                            </ul>
+                        </div>
+                        <div class="inline-img">
+                            <img src="../src/img/profil/beratung-img2.jpg" alt="bt.img2">
+                            <ul>
+                                <li>Umfeldberatung erfolgt in den meisten Fällen telefonisch, in manchen Fällen kommen  Erzieherinnen oder Lehrerinnen mit den Eltern und Therapeuten zu  gemeinsamen Gesprächen zusammen, manchmal ist eine Hospitation des  Therapeuten in Einrichtungen angezeigt.</li>
+                                <li>Über die parallel zur Therapie laufende Elternarbeit hinaus bieten wir bei  Eltern, deren Beziehung zu ihren Kindern von häufigen  Konfliktsituationen belastet ist, eine <div style="color:#ff9500; margin: 0; display: inline;">Triple-P Beratung</div> an.</li>
+                            </ul>
+                        </div>
+                        <p>Das bewährte Erziehungskonzept unterstützt Sie bei der Erziehung Ihrer Kinder und baut dabei auf den Stärken Ihrer Familie auf. Häufig sind nur kleine Veränderungen im Familienalltag erforderlich, um ...</p>
+                        <ul>
+                            <li> ...die Beziehung zu Ihrem Kind zu stärken, wünschenswertes Verhalten zu fördern,</li>
+                            <li>...schwierigen Situationen vorzubeugen und</li>
+                            <li>...auf Herausforderungen im Familienalltag ruhig und positiv zu reagieren.</li>
+                        </ul>
+                        <h2 style="color:#ff9500;">wingwave®-Coaching</h2>
+                        <ul style="list-style-type: none;">
+                            <li>wingwave®-Coaching ist ein im Jahr 2001 von den Diplom-Psychologen Cora Besser-Siegmund und Harry Siegmund entwickeltes Kurzzeit-Coaching-Konzept, das in den Bereichen Business, Leistungssport, Pädagogik und Didaktik und Gesundheit genutzt wird.</li>
+                            <li>Normalerweise verarbeiten wir unsere Erlebnisse und Erfahrungen, während wir schlafen. Der Volksmund sagt dazu: „Schlaf eine Nacht drüber, dann sieht die Welt wieder anders aus.“</li>
+                            <li>Zuständig für diesen Verarbeitungsprozess sind die sogenannten REM-Phasen. REM steht für Rapid Eye Movement: Schnelle Augenbewegungen. Das sind die Phasen im Schlaf, in denen wir träumen und in denen sich unsere Augen bei geschlossenen Lidern schnell hin und her bewegen.</li>
+                            <li>Manchmal reichen die normalen REM-Phasen nicht aus, um ein Erlebnis zu verarbeiten. Denn die zunehmende Informationsflut kann unser Gehirn und die REM-Phasen überfordern. Dies passiert den gesündesten Menschen und ist in der heutigen Zeit bedingt durch die hohe Veränderungs- und Leistungsgeschwindigkeit völlig normal.</li>
+                            <li>Die nicht verarbeiteten Stresserlebnisse können sich unterschiedlich auswirken: blockierende Emotionen - wie Ängste oder Selbstzweifel, verminderte Leistungsfähigkeit und Leistungsblockaden, innere Unruhe, emotionaler Rückzug, Antriebslosigkeit usw.</li>
+                            <li>Um die Stressoren und blockierenden Emotionen zu identifizieren, wird der Myostatiktest genutzt. Um anschließend die blockierten Verarbeitungsmechanismen wieder anzustoßen und den Stress zu lösen, werden im wingwave-Coaching dann schnelle Fingerbewegungen vor den Augen des Klienten eingesetzt. Der Klient folgt diesen Bewegungen mit seinem Blick. So werden schnelle Augenbewegungen erzeugt, die in der Wirkung den REM-Phasen ähneln.</li>
+                            <li>Meist reichen schon 3 bis 5 Coachingsitzungen aus, um emotional wieder in Balance zu kommen, sowie die gewohnte Leistungsfähigkeit und Lebensqualität wiederherzustellen.</li>
+                        </ul>
+                    </div>
+                    <div class="topic-content" id="content-lernwerkstatt" style="display: none;">
+                        <h3 class="topic-content-header" style="color: #008d92;">Lernwerkstatt</h3>
+                        <h2 style="font-size: 18px; color: #008d92"><i>Die AFS- Methode bei Lese- Rechtschreibschwäche und Rechenschwäche</i></h2>
+                        <h2>Wenn ein Kind...</h2>
+                        <ul>
+                            <li>...beim Lesen, Schreiben oder Rechnen zeitweise sehr ablenkbar ist,</li>
+                            <li>...immer wieder Ausflüchte sucht, um nicht schreiben, lesen oder rechnen zu müssen,</li>
+                            <li>...sich über Sehprobleme oder das Verschwimmen von Buchstaben beklagt,</li>
+                            <li>...im Unterricht immer wieder nachfragen muss,</li>
+                            <li>...durch Üben keine dauerhafte Erfolge erzielt,</li>
+                            <img src="../src/img/profil/lernwerkstatt-img1.jpg" alt="ls-img1" style="width:200px; margin-top: 20px;">
+                            <img src="../src/img/profil/lernwerkstatt-img2.jpg" alt="ls-img2" style="display: inline; width:200px">
+                        </ul>
+                        <ul style="margin-bottom: 20px;">
+                            <li>kann eine <div style="color:#008d92; margin: 0; display: inline;">Lese-Rechtschreib-Schwäche</div> oder eine <div style="color:#008d92; margin: 0; display: inline; list-style-type: none;">Rechenschwäche</div> vorliegen</li>
+                        </ul>
+                        <ul style="margin-bottom: 20px;">
+                            <li>Die Heilmittel-Richtlinien sagen es schwarz auf weiß: Störungen wie Legasthenie und sonstige isolierte Lernstörungen sind keine Indikation für eine ärztlich  verordnete Ergotherapie zu Lasten der gesetzlichen Krankenversicherung.</li>
+                            <li>Ergotherapeuten dürfen also keine Kinder behandeln, nur weil diese nicht lesen oder  schreiben können. Sie behandeln die Kinder, weil diese Schwierigkeiten in den basalen Voraussetzungen zum Erlernen der Kulturtechniken (Lesen,  Schreiben, Rechnen) wie beispielsweise Störungen in der Wahrnehmung und Wahrnehmungsverarbeitung, oft auch diverse Störungen in der  Aufmerksamkeit, Konzentration, Ausdauer, dem psychomotorischen Tempo und der psychomotorischen Qualität haben.</li>
+                            <li>Eine aufgrund solcher  Schwierigkeiten verordnete ergotherapeutische Behandlung kann aber  sicherlich in Verbindung mit gezielter Förderung der Regelkenntnisse zu Erfolgen im Erlernen der Kulturtechniken führen.</li>
+                            <li style="margin-bottom: 20px;">Aus diesem Grund biete ich als privat abzurechnende Leistung ein Training nach der zertifizierten AFS- Methode an. Nur diplomierte Trainer des EÖ-DL werden seit 1996 nach den Richtlinien der European Dyslexia  Association ausgebildet und sind zur Ausübung der Methode berechtigt.</li>
+                            <li>Die <div style="color:#008d92; margin: 0; display: inline;">AFS- Methode (Aufmerksamkeitsebene - Funktion der Sinne - Fehlersympomatik)</div> ist eine ganzheitliche Methode, die davon ausgeht,  dass das alleinige Üben von Rechtschreibregeln Kindern mit LRS nicht hilft die Sinneswahrnehmungen, die für das Lesen, Schreiben und Rechnen vor allem benötigt werden, bei legasthenen Menschen auf andere Weise verarbeitet  werden und daher parallel geschult werden müssen die veränderten Sinneswahrnehmungen zu einer Zeit weisen herabgesetzten  Aufmerksamkeit führen, so dass auch diese parallel trainiert werden muss.</li>
+                        </ul>
+                        <h2 style="color:#008d92; margin-bottom: 7px;">Ablauf des Trainings:</h2>
+                        <p style="margin-bottom: 20px;">Das Training beinhaltet ein Richten der Aufmerksamkeit und Üben der Konzentration, ein Arbeiten an den Sinneswahrnehmungen und ein Schulen der Rechtschreibung/ des Rechnens.</p>
+                        <h2 style="color:#008d92; margin-bottom: 7px;">Rahmenbedingungen:</h2>
+                        <p style="margin-bottom: 20px;">Das Training erfolgt stets in der Einzelsituation.</p>
+                        <h2 style="color:#008d92; margin-bottom: 7px;">Lerncoaching</h2>
+                        <p style="margin-bottom: 20px;">Beim Lerncoaching geht es um fächerübergreifende  Lernstrategien und Lerntechniken. Gleichzeitig wird - einen ganzheitlichen Ansatz verfolgend - an der Motivation, dem Selbstmanagement und der sozialen Kompetenz arbeitet. Das Lerncoaching geht davon aus, dass der bestmögliche Lernerfolg von einem positiv-emotionalen, motivierten sowie konzentrierten Zustand des Kindes abhängt.   Ziel ist es Strategien zum Erreichen eines solchen Zustands zu entwickeln und Lernblockaden zu lösen.</p>
+                        <p>Wir haben die Zulassung für die Förderung nach § 35a SGB VIII.</p>
+                    </div>
+                    <div class="topic-content" id="content-erwachsene" style="display: none;">
+                    <h3 class="topic-content-header" style="color: #981be1;">Erwachsene</h3>
+                        <h2>Neurologie und Handtherapie</h2>
+                        <ul style="list-style-type: none;">
+                            <li>Ergotherapie wird bei neurologischen Erkrankungen durch akute und chronische Krankheitsbilder bestimmt, denen allen eines gemeinsam ist:</li>
+                            <li>Hier stehen  Menschen im Mittelpunkt, die durch Unfälle oder Krankheiten auf einen Schlag oder fortschreitend Handlungskompetenzen einbüßen müssen. Hinzu kommen häufig nachfolgende Veränderungen der Lebenssituation durch  psychische Labilität und soziale Veränderungen (Wohnraumwechsel,  Einschränkungen in der Alltags- und Freizeitgestaltung).</li>
+                            <li>Zu den typischen Krankheitsbildern gehören das Nachlassen der Funktionen  der Sinnesorgane, Schlaganfälle, Multiple Sklerose, Morbus Parkinson,  Zustand nach Tumorentfernung sowie degenerative Erkrankungen des Muskel- und Skelettsystems.</li>
+                            <li style="margin-bottom: 20px;">Ziel ist über die Förderung von Wahrnehmungsprozessen, Bewegungs- und Handlungsmöglichkeiten verloren gegangene Fähigkeiten zu ersetzten bzw. noch vorhandene Fähigkeiten zu sichern, um somit die größt mögliche Selbstständigkeit im Alltag zu erhalten oder wiederzuerlangen.</li>
+                            <li style="margin-bottom: 20px;">Eine ergotherapeutische Behandlung wird <div style="color:#981be1; margin: 0; display: inline;">vom Arzt verordnet</div>. Die Kosten werden von den <div style="color:#981be1; margin: 0; display: inline;">Krankenkassen</div> übernommen.</li>
+                            <li>In der ersten Therapieeinheit lernen Sie den Therapeuten kennen, der Sie  während der gesamten Behandlungsdauer betreuen wird. In einem ausführlichen Aufnahmegespräch werden Sie auch nach Ihren persönlichen  Zielvorstellungen befragt. Anschließend wird ein körperlicher und ggf.  auch ein kognitiver Befund als Grundlage für die Therapie erstellt.</li>
+                            <li style="margin-bottom: 20px;">Die sich anschließende Therapie ist auf ihre Lebensumstände detailliert abgestimmt, kontinuierlich werden Veränderungen überprüft und die  Therapie angepasst. Die Versorgung mit Hilfsmitteln bedarf der  sorgfältigen Beratung. Dies betrifft die Auswahl der geeigneten  Hilfsmittel und die Schulung der Anwendung. Kleine Übungen für zu Hause  sind selbstverständliche Alltagshilfe, um schnellere Erfolge zu erzielen bzw. erreichte Erfolge zu stabilisieren.</li>
+                            <li>Selbstverständlich bieten wir auch <div style="color:#981be1; margin: 0; display: inline;">Hausbesuche</div> an.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="../src/js/script-praxisprofil.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </body>
+</html>

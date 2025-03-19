@@ -1,0 +1,5 @@
+cards: 20-26
+cookie-btn: 400
+desktop-nav: 300
+more-btn: 11
+theme-btn: 11

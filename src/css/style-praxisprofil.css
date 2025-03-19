@@ -1,0 +1,296 @@
+.profil_container{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: center;
+  }
+  
+  .profil_container img{
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-right: 20px;
+    width: 90px;
+  }
+  
+  .profil_container a{
+    color: #000000;
+    text-decoration: none;
+    font-size: 22px;
+    transition: all 0.5s ease;
+  }
+  
+  .profil_img_box{
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(12px);
+    border: none;
+    border-radius: 50px;
+    padding: 22px 20px;
+    cursor: pointer;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    margin-left: -20px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    text-align: center;
+    transition: all 0.5s ease;
+    flex: 0 0 auto;
+  }
+  
+  .profil_img_box:hover{
+    transform: scale(1.1);
+    margin-right: 60px;
+    margin-left: 40px;
+    box-shadow: rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    backdrop-filter: blur(10px);
+    background-color: #ffffff9e;
+  }
+
+  #card_saeuglinge:hover{
+    box-shadow: #37baee 0px 0px 0px 2.5px;
+  }
+  
+  #card_kleinkinder:hover{
+    box-shadow: #93be21 0px 0px 0px 2.5px;
+  }
+  
+  #card_schulkinder:hover{
+    box-shadow: #38b7c0 0px 0px 0px 2.5px;
+  }
+  
+  #card_praevention:hover{
+    box-shadow: #1c9cd6 0px 0px 0px 2.5px;
+  }
+  
+  #card_beratung:hover{
+    box-shadow: #f08349 0px 0px 0px 2.5px;
+  }
+  
+  #card_lernwerkstatt:hover{
+    box-shadow: #3a5fa6 0px 0px 0px 2.5px;
+  }
+  
+  #card_erwachsene:hover{
+    box-shadow: #5d5d9f 0px 0px 0px 2.5px;
+  }
+
+  /*active*/
+.active-card{
+  transform: scale(1.1);
+  margin-right: 60px;
+  margin-left: 40px;
+  background-color: #FFFFFF;
+  animation: active_blink 2s infinite;
+}
+
+.active-card-dark{
+  transform: scale(1.1);
+  margin-right: 60px;
+  margin-left: 40px;
+}
+
+.topics-startalert{
+  color:#272424;
+  font-size: 40px;
+  transition: all 0.5s ease;
+}
+
+#topic-content{
+  text-align: left;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 50px;
+  border-radius: 25px;
+  padding: 2vw 5vw 2vw 5vw;
+  margin-bottom: 50px;
+  filter: none;  /* Remove blur from the main element */
+  -webkit-backdrop-filter: blur(5px); /* Blur applied behind the content */
+  backdrop-filter: blur(5px);
+  background-color: #97979733;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 25px;
+}
+
+#topic-content img{
+  border-radius: 25px;
+}
+
+#topic-content p, li{
+  font-size: 19px;
+  line-height: 25px;
+}
+
+#topic-content h2{
+  font-size: 25px;
+}
+
+#topic-content h1{
+  line-break: anywhere;
+}
+
+.topic-content-header{
+  font-size: 40px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.inline-img {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-start;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.inline-img img {
+  margin-right: 20px;
+  width: 150px;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.inline-img-reverse{
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-start;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px; 
+}
+
+.inline-img-reverse img {
+  margin-right: 20px;
+  width: 150px;
+  height: auto;
+  max-width: 100%;
+  border-radius: 30%;
+}
+
+.numberlist ol {
+  list-style: none;
+  counter-reset: item;
+}
+
+.numberlist li {
+  counter-increment: item;
+  margin-bottom: 5px
+}
+
+.numberlist ol li::before {
+  margin-right: 10px;
+  content: counter(item);
+  background: #0064d7;
+  border-radius: 100%;
+  color: white;
+  width: 1.2em;
+  text-align: center;
+  display: inline-block;
+}
+
+/* ------------------------------------------------ dark mode ------------------------------------------------ */
+body.dark-mode .topics-startalert{
+  color: #FFFFFF;
+}
+
+body.dark-mode .profil_img_box{
+  background-color: rgba(50, 50, 50, 0.15);
+  box-shadow: rgba(231, 231, 231, 0.4) 0px 0px 0px 2px, rgba(255, 255, 255, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+  
+body.dark-mode .profil_img_box a{
+  color: #f6f5fa;
+}
+
+body.dark-mode .profil_img_box:hover{
+  transform: scale(1.1);
+  margin-right: 60px;
+  margin-left: 40px;
+  box-shadow: rgba(231, 231, 231, 1) 0px 0px 0px 2.5px, rgba(255, 255, 255, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+  
+body.dark-mode .imgbox_lightup{
+  filter: brightness(1.6);
+}
+
+body.dark-mode #topic-content{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 25px;
+}
+
+/* -------------------------- Mobile Mode ------------------------*/
+@media only screen and (max-width: 890px) {
+  .starttitle{
+    padding-top: 120px;
+    font-size: 50px;
+  }
+  .topics-startalert{
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .starttitle{
+    font-size: 50px;
+    padding-top: 70px;
+    margin-bottom: 15px;
+  }
+
+  .topic-content-header{
+    font-size: 28px !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .topic-content-header{
+    font-size: 30px;
+  }
+  
+  .inline-img {
+    flex-direction: column;
+  }
+  
+  .inline-img img {
+    margin-right: 20px;
+    width: 150px;
+    height: auto;
+    max-width: 100%;
+    border-radius: 50%;
+  }
+  
+  .inline-img-reverse{
+    flex-direction: column;
+  }
+  
+  .inline-img-reverse img {
+    margin-right: 20px;
+    width: 150px;
+    height: auto;
+    max-width: 100%;
+    border-radius: 30%;
+  }
+}
+
+@media only screen and (max-width: 1120px) {
+.mobile_center_card{ /* Karte die für animation verschoben wird */
+  margin-left: 7vw;
+  animation-duration: 2s;
+  animation-delay: 1s;
+}
+body.dark-mode .mobile_center_card{
+  margin-left: 7vw;
+}
+.profil_container{
+  justify-content: left;
+}
+    
+@keyframes slide-seeker {
+  0% {margin-left: 7vw}
+  50% {margin-left: -40vw}
+  100% {margin-left: 7vw}
+}
+}

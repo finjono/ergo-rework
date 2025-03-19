@@ -1,0 +1,293 @@
+.about_card {
+  background-color: #ffffff74;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto; 
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 0px 2px, 
+              rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, 
+              rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  text-align: center; 
+  transition: all 0.5s ease;
+  width: 90vw;
+  max-width: 250px;
+  height: auto;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  user-select: none;
+}
+
+.about_card_container { 
+  display: inline-flex;
+  align-items: center;  
+}
+
+.about_card img {
+  width: 60px;
+  margin-right: 25px;
+}
+
+.about_card p {
+  font-size: 25px;
+}
+
+.about_card:hover{
+  transform: scale(1.1);
+  box-shadow: #000000 0px 0px 0px 2.5px;
+  background-color: #ffffffb4;
+  cursor: pointer;
+}
+
+#overlay {
+  display: none;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.226); /* Schwarzer Hintergrund mit 50% Deckkraft */
+  z-index: 90; /* Stellen Sie sicher, dass es unter der Box liegt */
+}
+
+#overlay.show {
+  display: block;
+}
+
+.about_box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 100; 
+  width: 80%; 
+  max-width: 600px; 
+  border: 2px solid black;
+  border-radius: 25px;
+  transform-origin: center center; /* Set the transform origin to the top center */
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.3s ease-in-out;
+  opacity: 0; 
+}
+
+.about_box.show {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 0.3s ease-in-out;
+  opacity: 1; 
+}
+
+.about_title_bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about_box_title{
+  margin: 0;
+}
+
+.about_box p{
+  text-align: left;
+}
+
+.about_close_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+
+
+.profil_container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  margin-top: 70px;
+  width: 75vw;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(255, 255, 255, .15);
+  box-shadow: 0px 0px 20px rgb(0, 105, 70); 
+  border-radius: 25px;
+  padding: 10px;
+  animation-name: shadowLighter;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shadowLighter {
+  0%{
+    box-shadow: 0px 0px 20px rgb(0, 105, 70);
+  }
+  50%{
+    box-shadow: 0px 0px 20px rgb(119, 119, 119); 
+  }
+  100%{
+    box-shadow: 0px 0px 20px rgb(0, 105, 70); 
+  }
+}
+
+.profil_container img{
+  width: 50px;
+  padding-right: 10px;
+  margin-top: 13px;
+}
+
+.profil_container a, .about_card a{
+  color: #000000;
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 0.5s ease;
+}
+
+.profil_inside_container{
+  display: inline-flex;
+  align-items: center;  
+}
+
+.profil_img_box {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 25px;
+  height: auto;
+  width: 80vw;
+  max-width: 200px;
+  min-width: 190px; 
+  cursor: pointer;
+  margin: 20px;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 0px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  text-align: center;
+  transition: all 0.5s ease;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profil_img_box:hover{
+  transform: scale(1.1);
+  box-shadow: rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  backdrop-filter: blur(10px);
+  background-color: #ffffff9e;
+}
+
+#saeuglinge:hover{
+  box-shadow: #37baee 0px 0px 0px 2.5px;
+}
+
+#kleinkinder:hover{
+  box-shadow: #93be21 0px 0px 0px 2.5px;
+}
+
+#schulkinder:hover{
+  box-shadow: #38b7c0 0px 0px 0px 2.5px;
+}
+
+#praevention:hover{
+  box-shadow: #1c9cd6 0px 0px 0px 2.5px;
+}
+
+#beratung:hover{
+  box-shadow: #f08349 0px 0px 0px 2.5px;
+}
+
+#lernwerkstatt:hover{
+  box-shadow: #3a5fa6 0px 0px 0px 2.5px;
+}
+
+#erwachsene:hover{
+  box-shadow: #5d5d9f 0px 0px 0px 2.5px;
+}
+
+/* -------------------------- Dark Mode ------------------------------ */
+body.dark-mode .welcome{
+  color: #FFFFFF;
+}
+
+body.dark-mode .profil_img_box{
+  background-color: rgba(50, 50, 50, 0.15);
+  box-shadow: rgba(231, 231, 231, 0.4) 0px 0px 0px 2px, rgba(255, 255, 255, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+body.dark-mode .profil_img_box a{
+  color: #f6f5fa;
+}
+
+body.dark-mode .profil_img_box:hover{
+  transform: scale(1.1);
+  margin-right: 60px;
+  margin-left: 40px;
+  box-shadow: rgba(231, 231, 231, 1) 0px 0px 0px 2.5px, rgba(255, 255, 255, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+body.dark-mode .imgbox_lightup{
+  filter: brightness(1.6);
+}
+
+body.dark-mode .about_card{
+  background-color: #4c4c4c76;
+  box-shadow: rgba(231, 231, 231, 0.4) 0px 0px 0px 2px, rgba(255, 255, 255, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+body.dark-mode .about_card img{
+  filter: invert(100%)
+}
+
+body.dark-mode .about_card p{
+  color: #FFFFFF;
+}
+
+body.dark-mode .about_card:hover{
+  box-shadow: #ffffff 0px 0px 0px 2.5px;
+}
+/* -------------------------- Mobile Mode ------------------------*/
+
+
+
+
+@media only screen and (max-width: 450px) {
+  .more-btn{
+    font-size: 38px;
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: 50px;
+  }
+  .more-img {
+    vertical-align: middle;
+    padding-right: 20px;
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 40px;
+  }
+  .more-text {
+    padding-right: 25px;
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: "Inter", sans-serif;
+  }
+  
+}
+
+@media only screen and (max-width: 380px) {
+  .more-btn{
+    margin-top: 25px;
+    margin-bottom: 50px;
+  }
+}

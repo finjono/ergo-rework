@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); /*font-family: 'Roboto', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap'); /*font-family: 'Varela', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); /* font-family: "Inter", sans-serif; NOTE: Normal font*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap'); /* font-family: "Nunito", sans-serif; NOTE: rounded normal font*/ 
+
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9febc2",endColorstr="#ffffff",GradientType=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    transition: background-color 1s ease;
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Varela", sans-serif;
+    color: #050505;
+  }
+
+  body *::selection { 
+    background-color: #09B397; 
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for other browsers */
+  body {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  body{
+    padding-top: 130px;
+  }
+/*
+  body{
+    background: radial-gradient(circle,rgba(166, 230, 255, 0.754) 20%, rgb(255, 255, 255) 100%);
+  }
+
+    background: -moz-radial-gradient(circle, rgba(221, 161, 94, 0.754) 20%, rgb(252, 254, 255) 100%);
+    background: -webkit-radial-gradient(circle, rgba(46, 130, 179, 0.754) 20%, rgb(248, 248, 248) 100%);*/
+
+  /* old green: hsla(170, 90%, 37%, 1)*/
+  @media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.site-content{
+  min-height: 100vh;
+}
+
+/* -------------------------------- Cookies -------------------------------*/
+
+.cookie-btn{
+  background-color: rgba(255, 255, 255, 0.622);
+  backdrop-filter: blur(12px);
+  border: none;
+  border-radius: 30px;
+  padding: 8px 8px;
+  font-size: 16px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  z-index: 400;
+  margin-left: 30px;
+}
+
+.cookie-btn-img{
+  width: 24px; 
+  height: auto; 
+  display: block;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.cookie_text{
+  display: none;
+  padding: 10px 5px 5px 5px;
+}
+
+.cookie_text p{
+  font-size: 20px;
+  line-height: 25px;
+}
+
+/* -------------------------------- NAV -------------------------------- */
+.desktop-nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 35px);
+  max-width: calc(100% - 20px);
+  z-index: 300;
+  background-color: rgba(255, 255, 255, .15);
+  backdrop-filter: blur(20px);
+  box-shadow: 0px 10px 26px rgba(0, 0, 0, 0.34); 
+  border-radius: 35px;
+  margin-top: 15px;
+  transition: all 0.5s ease;
+}
+
+.desktop-nav-content{
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 100px;
+}
+
+.title{
+  font-size: 20px;
+  text-align: left;
+  line-height: 30px;
+  padding-left: 20px;
+}
+
+.title-name{
+  color: #09B397;
+  font-weight: bold;
+  position: relative;
+}
+
+.desktop-nav-content ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 50px;
+}
+
+.desktop-nav-content li {
+  float: left;
+  margin-right: 10px; 
+}
+
+.desktop-nav-content li a {
+  display: block;
+  color: rgb(0, 0, 0);
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  border-radius: 10px;
+  font-size: 22px;
+}
+
+.desktop-nav-content li a:hover {
+  background-color: rgba(9, 179, 151, 0.273);
+  box-shadow: 0 4px 10px rgba(9, 179, 151, 0.273);
+  transform: translateY(-3px);
+}
+
+/* ------------------------ Theme Button ------------------------------ */
+
+.mode-switch, .menu-drop {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.mode-switch-desktop{
+  padding-right: 70px;
+}
+
+.square-button {
+  background-color: #09B397;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  z-index: 11;
+}
+
+.square-button:hover {
+  background-color: #ffffffbf;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+}
+
+#lightmodeicon, #menuicon, #lightmodeicon-mobile {
+  width: 24px; 
+  height: auto; 
+  display: block;
+  transition: opacity 0.5s ease-in-out
+}
+
+.mobile-nav-buttons{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0;
+}
+
+.mode-switch-mobile{
+  float: left;
+  padding-bottom: 20px;
+}
+
+.menu-drop {
+  float: right;
+  padding-bottom: 20px;
+}
+
+.mobile-nav-content{
+  display: block;
+  align-items: center;
+}
+
+.mobile-nav-content ul{
+  display: none;
+  text-align: center;
+}
+
+.mobile-nav-content li{
+  list-style-type: none;
+}
+
+.mobile-nav-content li a{
+  display: block;
+  color: rgb(0, 0, 0);
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.welcome{
+  color:#272424;
+  font-size: 4rem;
+  padding: 2rem 5vw;
+  margin-bottom: 1rem;
+  transition: all 0.5s ease;
+  margin-top: 0;
+}
+/* ------------------- content ---------------------------- */
+.site-content {
+  margin-top: 90px;
+  text-align: center;
+}
+
+.starttitle{
+  color:#272424;
+  font-size: 70px;
+  padding-top: 55px;
+  padding-right: 5vw;
+  padding-left: 5vw;
+  margin-bottom: 0px;
+  transition: all 0.5s ease;
+}
+
+/* -------------------------- Dark Mode ------------------------------ */
+
+body.dark-mode {
+  color:#f6f5fa;
+  background: rgb(40, 43, 41);
+  background-repeat: repeat;
+}
+
+body.dark-mode .site-content{
+  background: rgb(40, 43, 41);;
+}
+/*save vor v2: 
+background: radial-gradient(circle, rgba(9, 43, 94, 0.792) 20%, rgb(0, 0, 0) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#09b397", endColorstr="#FFFFFF", GradientType=1 );
+
+old green: hsla(170, 90%, 23%, 1)
+
+  background-color: #000000;
+  background: radial-gradient(circle, rgba(188, 108, 37, 0.792) 20%, rgb(0, 0, 0) 100%);
+  background: -moz-radial-gradient(circle, rgba(188, 108, 37, 0.792) 20%, rgb(0, 0, 0) 100%);*/
+
+body.dark-mode .welcome{
+  color: #FFFFFF;
+}
+
+body.dark-mode .cookie-btn{
+  background-color: #383434;
+}
+
+body.dark-mode .cookie-btn-img{
+  filter: invert(100%);
+}
+
+body.dark-mode .desktop-nav{
+  background-color: rgba(100, 100, 100, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-box-shadow: 0px 10px 26px 4px rgba(255,255,255,0.25);
+  box-shadow: 0px 10px 30px 5px rgba(255, 255, 255, 0.297);
+}
+
+@media only screen and (min-width: 870px) {
+body.dark-mode .desktop-nav-content {
+  box-shadow: 0 0px 0px 0 rgba(222, 222, 222, 0.2);
+}
+}
+
+body.dark-mode .desktop-nav-content li a{
+  color: rgb(255, 255, 255);
+}
+
+body.dark-mode .mobile-nav-content li a{
+  color: rgb(255, 255, 255);
+}
+
+body.dark-mode .desktop-nav-content li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .about_box{
+  background: rgb(40, 43, 41);
+}
+
+/* -------------------------- Mobile Mode ------------------------*/
+
+@media only screen and (max-width: 890px) {
+  .desktop-nav-content ul {
+    display:none;
+  }
+  .mode-switch-desktop{
+    display: none;
+  }
+  .menu-drop{
+    display: block;
+  }
+  .title{
+    font-size: 17px;
+    line-height: 25px;
+  }
+  .logo {
+    height: 90px;
+  }
+  .square-button {
+    padding: 13px 13px;
+  }
+  .desktop-nav-content{
+    padding: 15px 0;
+    padding-bottom: 5px;
+  }
+  .mobile-nav-content li a{
+    font-size: 20px;
+  }
+  .desktop-nav{
+    border-radius: 20px;
+    width: calc(100% - 15px);
+  }
+}
+
+@media only screen and (min-width: 890px) {
+  .mobile-nav-buttons{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 890px) {
+  .welcome{
+    padding-top: 120px;
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .title{
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .logo {
+    height: 80px;
+  }
+  .square-button {
+    padding: 10px 10px;
+  }
+  .welcome{
+    font-size: 30px;
+    padding-top: 70px;
+    margin-bottom: 15px;
+  }
+}

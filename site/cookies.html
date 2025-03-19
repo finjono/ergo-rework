@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de-DE">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Home | Ergotherapie Küchmeister</title>
+        <link rel="stylesheet" href="../src/css/style.css">
+        <link rel="stylesheet" href="../src/css/style-cookies.css">
+        <link rel="shortcut icon" href="../src/img/website/favicon.ico">
+    </head>
+    <body>
+        <span class="cookie-btn" id="cookiebtn">
+            <img src="../src/img/website/cookie.png" alt="cookie" class="cookie-btn-img" id="cookie_popup_img" onclick="cookiePopup()">
+            <div class="cookie_text">
+              <p>Unsere Website verwendet technisch notwendige
+                <br>Cookies, um Ihre Nutzung der Website zu verbessern.
+                <br>Diese Cookies können nicht deaktiviert werden. </p>
+                <a href="site/cookies.html" style="color: #09B397;">Mehr Infos</a>
+            </div>
+        </span>
+        <span class="cookie-btn" id="cookiebtn">
+            <img src="../src/img/website/cookie.png" alt="cookie" class="cookie-btn-img" id="cookie_popup_img" onclick="cookiePopup()">
+            <div class="cookie_text">
+                <p>Unsere Website verwendet technisch notwendige
+                <br>Cookies, um Ihre Nutzung der Website zu verbessern.
+                <br>Diese Cookies können nicht deaktiviert werden. </p>
+                <a href="cookies.html" style="color: #09B397;">Mehr Infos</a>
+            </div>
+        </span>
+        <div class="desktop-nav">
+            <div class="desktop-nav-content">
+                <img src="../../src/img/website/logo-wide.png" alt="Logo" class="logo">
+                <h1 class="title">ErgoTherapie<br>Michael Küchmeister</h1>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="praxisprofil.html" onclick="cardreset()">Praxisprofil</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="impressum.html">Impressum</a></li>
+                </ul>
+                <div class="mode-switch mode-switch-desktop">
+                    <button onclick="toggleTheme()" class="square-button" id="themebutton"><img id="lightmodeicon" src="../../src/img/website/sonne.png" alt="modeicon"></button>
+                </div>
+            </div>
+            <div class="mobile-nav-content"> <!--Mobile NAV-->
+                <div class="mobile-nav-buttons">
+                    <div class="mode-switch mode-switch-mobile" style="display: inline-block">
+                        <button onclick="toggleThemeMobile()" class="square-button" id="themebutton-mobile"><img id="lightmodeicon-mobile" src="../../src/img/website/sonne.png" alt="modeicon"></button>
+                    </div>
+                    <div class="menu-drop" style="display: inline-block;">
+                        <button onclick="hamburger()" class="square-button" id="menubutton"><img id="menuicon" src="../../src/img/website/menu.png" alt="menuicon"></button>
+                    </div>
+                </div>
+                    <ul id="mobilenav">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="praxisprofil.html" onclick="cardreset()">Praxisprofil</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="impressum.html">Impressum</a></li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+        <div class="site-content">
+            <h1 class="welcome">Cookies</h1>
+            <div class="content">
+                <p>Unsere Website verwendet technisch notwendige
+                    Cookies, um Ihre Nutzung der Website zu verbessern.
+                    Diese Cookies können nicht deaktiviert werden. Jedoch möchten wir vollkommen Transparent mit Ihnen sein.</p>
+                <h2>Warum kann ich die Cookies nicht deaktivieren?</h2>
+                <p style="padding-bottom: 20px;">Die Website der Ergotherapie Michael Küchmeister verwendet keine Tracking- oder Analyse Cookies. Alle Cookies die auf dieser Website verwendet werden, dienen der Funktionalität der Website. Sie verbessern ausschließlich das Nutzererlebnis.</p>
+                <h2>Wofür genau werden die funktionalen Cookies verwendet?</h2>
+                <p style="padding-bottom: 10px;">1. Die Website merkt sich Ihre Auswahl für den Darstellungsmodus (hell oder dunkel; Anpassbar über den Button oben rechts auf der Website bzw. oben links auf Mobilgeräten).
+                <br>Durch das Merken dieser Informationen müssen Sie beim Navigieren durch die Website nicht immer ihre Auswahl erneut treffen.</p>
+                <p style="padding-bottom: 10px;">2. Die Website merkt sich Ihre Auswahl der Praxisprofil Karte auf der Startseite, um Sie anschließend auf die Praxisprofil Seite weiterleiten zu können und Ihre Auswahl direkt anzuzeigen.</p>
+                <p style="padding-bottom: 10px;">3. Die Website merkt sich die Anzahl Ihrer Besuche, um bestimmte Hilfs-Animationen nicht unnötig abzuspielen.<br>Die Anzahl Ihrer Besuche wird nicht als Statistik an uns selber oder Dritte weitergegeben.</p>
+                <p style="padding-bottom: 10px;">4. Die Website merkt sich, ob sie in der Vergangenheit bereits den Dark-Mode der Website verwendet haben, um die Animation des Buttons vor erster Benutzung zu deaktivieren.</p>
+            </div>
+        </div>
+    <script src="../src/js/script-cookies.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </body>
+</html>

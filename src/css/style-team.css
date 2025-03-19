@@ -1,0 +1,55 @@
+.box{
+    padding: 5px;
+    width: 240px;
+    height: 360px;
+    text-align: center;
+    margin: 20px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #ffffffd5;
+    transition: all 0.5s ease;
+  }
+  
+  .box svg{
+    padding-top: 5px;
+  }
+  
+  h2{
+    margin-top: 5px;
+    margin-bottom:25px;
+  }
+  
+  .box p{
+    margin-left:10px;
+    margin-right:10px;
+    line-height:20px;
+  }
+  
+  .container{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center; /*space-evenly*/
+    margin-top: 50px;
+    margin-bottom:50px;
+  }
+
+.tag{
+    margin:0;
+}
+
+.tag span{
+    padding: 5px 10px 5px 10px;
+    border-radius: 25px;
+}
+
+.tag_therapy span{
+  background: #f79358;
+}
+
+.tag_rezeption span{
+  background: #096a77;
+}
+
+body.dark-mode .box{
+  background: #00000042;
+}

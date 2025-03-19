@@ -1,0 +1,20 @@
+.content{
+    text-align: left;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 60px;
+    border-radius: 25px;
+    padding: 2vw 5vw 2vw 5vw;
+    background-color: #97979733;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 25px;
+    margin-bottom: 50px;
+}
+
+.content p{
+    font-size: 19px;
+    line-height: 25px;
+}
+
+.content a{
+    color: #2c21bb;
+}
