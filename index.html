@@ -3,61 +3,67 @@
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://randomwordgenerator.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.youtube.com; connect-src 'self';">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Home | Ergotherapie Küchmeister</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap">
         <link rel="stylesheet" href="/src/css/style.css">
         <link rel="stylesheet" href="/src/css/style-home.css">
         <link rel="shortcut icon" href="src/img/website/favicon.ico">
     </head>
     <body>
         <span class="cookie-btn" id="cookiebtn">
-            <img src="src/img/website/cookie.png" alt="cookie" class="cookie-btn-img" id="cookie_popup_img" onclick="cookiePopup()">
+            <img src="src/img/website/cookie.png" alt="cookie" class="cookie-btn-img" id="cookie_popup_img" onclick="cookiePopup()" role="button" aria-label="Open cookie settings">
             <div class="cookie_text">
               <p>Unsere Website verwendet technisch notwendige
                 <br>Cookies, um Ihre Nutzung der Website zu verbessern.
                 <br>Diese Cookies können nicht deaktiviert werden. </p>
-                <a href="site/cookies.html" style="color: #09B397;">Mehr Infos</a>
+                <a href="site/cookies.html" class="cookie-info-link">Mehr Infos</a>
             </div>
         </span> 
-        <div class="desktop-nav">
+        <nav class="desktop-nav">
             <div class="desktop-nav-content">
                 <img src="src/img/website/logo-wide.png" alt="Logo" class="logo">
                 <h1 class="title">ErgoTherapie<br>Michael Küchmeister</h1>
                 <ul>
-                    <li><a href="#" style="color: #09B397;">Home</a></li>
-                    <li><a href="site/praxisprofil.html" onclick="cardreset()">Praxisprofil</a></li>
+                    <li><a href="#" class="nav-active">Home</a></li>
+                    <li><a href="site/praxisprofil.html">Praxisprofil</a></li>
                     <li><a href="site/team.html">Team</a></li>
                     <li><a href="site/news.html">News</a></li>
                     <li><a href="site/kontakt.html">Kontakt</a></li>
                     <li><a href="site/impressum.html">Impressum</a></li>
                 </ul>
                 <div class="mode-switch mode-switch-desktop">
-                    <button onclick="toggleTheme()" class="square-button" id="themebutton"><img id="lightmodeicon" src="src/img/website/sonne.png" alt="modeicon"></button>
+                    <button onclick="handleThemeToggle('themebutton', 'lightmodeicon')" class="square-button" id="themebutton" aria-label="Toggle dark mode"><img id="lightmodeicon" src="src/img/website/sonne.png" alt="modeicon"></button>
                 </div>
             </div>
-            <div class="mobile-nav-content"> <!--Mobile NAV-->
+            <nav class="mobile-nav-content"> <!--Mobile NAV-->
                 <div class="mobile-nav-buttons">
-                    <div class="mode-switch mode-switch-mobile" style="display: inline-block">
-                        <button onclick="toggleThemeMobile()" class="square-button" id="themebutton-mobile"><img id="lightmodeicon-mobile" src="src/img/website/sonne.png" alt="modeicon"></button>
+                    <div class="mode-switch mode-switch-mobile">
+                        <button onclick="handleThemeToggle('themebutton-mobile', 'lightmodeicon-mobile')" class="square-button" id="themebutton-mobile" aria-label="Toggle dark mode"><img id="lightmodeicon-mobile" src="src/img/website/sonne.png" alt="modeicon"></button>
                     </div>
-                    <div class="menu-drop" style="display: inline-block;">
-                        <button onclick="hamburger()" class="square-button" id="menubutton"><img id="menuicon" src="src/img/website/menu.png" alt="menuicon"></button>
+                    <div class="menu-drop">
+                        <button onclick="hamburger()" class="square-button" id="menubutton" aria-label="Toggle navigation menu"><img id="menuicon" src="src/img/website/menu.png" alt="menuicon"></button>
                     </div>
                 </div>
                     <ul id="mobilenav">
-                        <li><a href="#" style="color: #09B397">Home</a></li>
-                        <li><a href="site/praxisprofil.html" onclick="cardreset()">Praxisprofil</a></li>
+                        <li><a href="#" class="nav-active">Home</a></li>
+                        <li><a href="site/praxisprofil.html">Praxisprofil</a></li>
                         <li><a href="site/team.html">Team</a></li>
                         <li><a href="site/news.html">News</a></li>
                         <li><a href="site/kontakt.html">Kontakt</a></li>
                         <li><a href="site/impressum.html">Impressum</a></li>
                     </ul>
-                </div>
-            </div> 
-        </div>
-        <div class="site-content">
+                </nav>
+            </nav> 
+        <main class="site-content">
             <div class="welcome_container">
-                <h2 class="welcome">Willkommen in unserer Praxis <br> <div class="underline">für <span style="background-color: #09B397;">Ergotherapie!</span></div></h2>
+                <h2 class="welcome">Willkommen in unserer Praxis <br> <div class="underline">für <span class="welcome-highlight">Ergotherapie!</span></div></h2>
                 <div class="about_card" id="aboutCard">
                         <div class="about_card_container">
                             <img src="src/img/website/about.png" alt="more">
@@ -70,7 +76,7 @@
             <div class="about_box" id="aboutBox">
                 <div class="about_title_bar">
                     <h3 class="about_box_title">Über uns</h3>
-                    <button class="about_close_button" onclick="closeAboutBox()">&times;</button>
+                    <button class="about_close_button" onclick="closeAboutBox()" aria-label="Close about us popup">&times;</button>
                 </div>
                 <p>Unsere Praxis für <u>Ergotherapie</u> setzt seit 15 Jahren einen Schwerpunkt auf die Behandlung von Säuglingen, Kleinkindern, Kindergartenkindern und Schulkindern. Zwei Kolleginnen sind darüber hinaus auch für die Behandlung von Erwachsenen fortgebildet.
                 </p>
@@ -78,10 +84,10 @@
                 </p>
                 <p>Unser  Beratungsangebot richtet sich an Eltern, Erzieher und Lehrer, um jede Bezugsgruppe in ihren Möglichkeiten der Begleitung des Kindes zu unterstützen.
                 </p>
-                <p>Informieren Sie sich gerne auch über die Möglichkeiten des <a href="https://www.youtube.com/watch?v=X5N621XhTtU">Neurofeedback</a> !</p>
+                <p>Informieren Sie sich gerne auch über die Möglichkeiten des <a href="https://www.youtube.com/watch?v=X5N621XhTtU" target="_blank" rel="noopener noreferrer">Neurofeedback</a> !</p>
             </div>
             <div class="profil_container">
-                <div class="profil_img_box" id="saeuglinge" style="z-index: 26">
+                <div class="profil_img_box" id="saeuglinge">
                     <a href="#" onclick="rememberCard('saeuglinge')">
                         <div class="profil_inside_container">
                             <img src="src/img/profil/main/saeuglinge.png" alt="saeuglinge">
@@ -89,7 +95,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="profil_img_box" id="kleinkinder" style="z-index: 25">
+                <div class="profil_img_box" id="kleinkinder">
                     <a href="#" onclick="rememberCard('kleinkinder')">
                         <div class="profil_inside_container">
                             <img src="src/img/profil/main/kleinkinder.png" alt="kleinkinder">
@@ -97,7 +103,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="profil_img_box" id="schulkinder" style="z-index: 24;">
+                <div class="profil_img_box" id="schulkinder">
                     <a href="#" onclick="rememberCard('schulkinder')">
                         <div class="profil_inside_container">
                             <img src="src/img/profil/main/schulkinder.png" alt="schulkinder">
@@ -105,7 +111,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="profil_img_box" id="praevention" style="z-index: 23">
+                <div class="profil_img_box" id="praevention">
                     <a href="#" onclick="rememberCard('praevention')">
                         <div class="profil_inside_container">
                             <img src="src/img/profil/main/praevention.png" alt="praevention">
@@ -113,15 +119,15 @@
                         </div>
                     </a>
                 </div>
-                <div class="profil_img_box" id="beratung" style="z-index: 22">
+                <div class="profil_img_box" id="beratung">
                     <a href="#" onclick="rememberCard('beratung')">
                         <div class="profil_inside_container">
-                            <img src="src/img/profil/main/beratung.png" alt="beratung" style="width: 63px; padding-left: 9px !important; padding-right: 9px !important;"> <!-- extra style because of dif size -->
+                            <img src="src/img/profil/main/beratung.png" alt="beratung"> <!-- extra style because of dif size, now handled by CSS -->
                             <p>Beratung</p>
                         </div>
                     </a>
                 </div>
-                <div class="profil_img_box" id="lernwerkstatt" style="z-index: 21">
+                <div class="profil_img_box" id="lernwerkstatt">
                     <a href="#" onclick="rememberCard('lernwerkstatt')">
                         <div class="profil_inside_container">
                             <img src="src/img/profil/main/lernwerkstatt.png" alt="lernwerkstatt" class="imgbox_lightup">
@@ -129,7 +135,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="profil_img_box" id="erwachsene" style="z-index: 20">
+                <div class="profil_img_box" id="erwachsene">
                     <a href="#" onclick="rememberCard('erwachsene')">
                         <div class="profil_inside_container">
                             <img src="src/img/profil/main/erwachsene.png" alt="erwachsene" class="imgbox_lightup">
@@ -138,7 +144,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </main>
     <script src="src/js/script-home.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </body>

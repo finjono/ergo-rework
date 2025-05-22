@@ -87,19 +87,18 @@ function cookiePopup() {
   cookiePopup_img.setAttribute("src", "src/img/website/" + cookie_img_src + ".png");
 };
 
-
-function toggleTheme() {
-  var themebutton = document.getElementById("themebutton");
+function handleThemeToggle(themeButtonId, iconId) {
+  var themebutton = document.getElementById(themeButtonId);
   if (themebutton.disabled) {
-    return; 
+    return;
   }
-  
+
   // temp disable
   themebutton.disabled = true;
   setTimeout(function() {
     themebutton.disabled = false;
   }, 1150);
-  setCookie("dark_everused",true,30);
+  setCookie("dark_everused", true, 30);
 
   // Toggle dark theme
   var body = document.querySelector("body");
@@ -107,7 +106,7 @@ function toggleTheme() {
   setCookie("darkMode", isDarkMode ? "true" : "false", 365);
 
   // change img src
-  var img = document.getElementById("lightmodeicon");
+  var img = document.getElementById(iconId);
   var bildPfad = img.getAttribute("src");
 
   if (bildPfad.toLowerCase().includes("sonne")) {
@@ -128,62 +127,44 @@ function toggleTheme() {
 
 // Check if the user had Dark Mode enabled
 document.addEventListener("DOMContentLoaded", function() {
-      // Assuming getCookie() function exists and retrieves the cookie value
-      var isDarkModeCookie = getCookie("darkMode");
-      var isMobile = window.innerWidth <= 890;
-
-      if (isDarkModeCookie === "true") {
-        if (isMobile) {
-          toggleThemeMobile();
-        } else {
-          toggleTheme();
-        }
-      }
-
-      //quality_tips()
-    });
-
-
-
-function toggleThemeMobile() {
-  var themebutton = document.getElementById("themebutton-mobile");
-  if (themebutton.disabled) {
-    return; 
-  }
-  
-  // temp disable
-  themebutton.disabled = true;
-  setTimeout(function() {
-    themebutton.disabled = false;
-  }, 1150);
-  setCookie("dark_everused",true,30);
-
-  // Toggle dark theme
+  var isDarkModeCookie = getCookie("darkMode");
   var body = document.querySelector("body");
-  var isDarkMode = body.classList.toggle("dark-mode");
-  setCookie("darkMode", isDarkMode ? "true" : "false", 365);
+  var lightModeIcon = document.getElementById("lightmodeicon");
+  var lightModeIconMobile = document.getElementById("lightmodeicon-mobile");
 
-  // change img src
-  var img = document.getElementById("lightmodeicon-mobile");
-  var bildPfad = img.getAttribute("src");
-
-  if (bildPfad.toLowerCase().includes("sonne")) {
-    bildPfad = "mond";
+  if (isDarkModeCookie === "true") {
+    body.classList.add("dark-mode");
+    if (lightModeIcon) {
+      lightModeIcon.setAttribute("src", "src/img/website/mond.png");
+    }
+    if (lightModeIconMobile) {
+      lightModeIconMobile.setAttribute("src", "src/img/website/mond.png");
+    }
   } else {
-    bildPfad = "sonne";
+    // Ensure icons are set to sun if not dark mode (e.g., cookie expired or first visit)
+    if (lightModeIcon) {
+      lightModeIcon.setAttribute("src", "src/img/website/sonne.png");
+    }
+    if (lightModeIconMobile) {
+      lightModeIconMobile.setAttribute("src", "src/img/website/sonne.png");
+    }
   }
+  //quality_tips()
+});
 
-  console.log(bildPfad);
-
-  img.classList.add("animate__animated", "animate__flip");
-  img.addEventListener("animationend", function() {
-    img.classList.remove("animate__animated", "animate__flip");
+// Event listeners for theme toggle buttons
+var themeButtonDesktop = document.getElementById("themebutton");
+if (themeButtonDesktop) {
+  themeButtonDesktop.addEventListener('click', function() {
+    handleThemeToggle("themebutton", "lightmodeicon");
   });
+}
 
-
-  setTimeout(function () {
-    img.setAttribute("src", "src/img/website/" + bildPfad + ".png");
-  }, 600);
+var themeButtonMobile = document.getElementById("themebutton-mobile");
+if (themeButtonMobile) {
+  themeButtonMobile.addEventListener('click', function() {
+    handleThemeToggle("themebutton-mobile", "lightmodeicon-mobile");
+  });
 }
 
 // Dropdown menu
@@ -476,145 +457,39 @@ function Erwachsene() {
 }
 
 function rememberCard(id) {
-  console.log(id);
-  var cardname = id;
-  var cardelement = document.getElementById(cardname);
-  var isDarkModeCookie = getCookie("darkMode");
+  var cardelement = document.getElementById(id);
+  // Ensure cardelement exists to prevent errors if ID is incorrect
+  if (!cardelement) {
+    console.error("Element with ID '" + id + "' not found.");
+    return;
+  }
 
-  if (cardname === "saeuglinge") {
-    setCookie("remcard", "saeuglinge", 1);
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
+  var isDarkMode = document.body.classList.contains("dark-mode");
 
-    setTimeout(function () {
-      window.location.href = "../../site/praxisprofil.html";
-    }, 200);
+  // Remove existing active classes from other cards if any (though this should ideally be handled by the page itself)
+  // For now, just focus on the clicked card
+  var activeCards = document.querySelectorAll(".active-card, .active-card-dark");
+  activeCards.forEach(function(card) {
+    card.classList.remove("active-card", "active-card-dark");
+  });
+
+  if (isDarkMode) {
+    cardelement.classList.add("active-card-dark");
+  } else {
+    cardelement.classList.add("active-card");
   }
-  else if (cardname === "kleinkinder") {
-    setCookie("remcard", "kleinkinder", 1);
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    setTimeout(function () {
-      window.location.href = "../../site/praxisprofil.html";
-    }, 200);
-  }
-  else if (cardname === "schulkinder") {
-    setCookie("remcard", "schulkinder", 1);
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    setTimeout(function () {
-      window.location.href = "../../site/praxisprofil.html";
-    }, 200);
-  }
-  else if (cardname === "praevention") {
-    setCookie("remcard", "praevention", 1);
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    setTimeout(function () {
-      window.location.href = "../../site/praxisprofil.html";
-    }, 200);
-  }
-  else if (cardname === "beratung") {
-    setCookie("remcard", "beratung", 1);
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    setTimeout(function () {
-      window.location.href = "../../site/praxisprofil.html";
-    }, 200);
-  }
-  else if (cardname === "lernwerkstatt") {
-    setCookie("remcard", "lernwerkstatt", 1);
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    setTimeout(function () {
-      window.location.href = "../../site/praxisprofil.html";
-    }, 200);
-  }
-  else if (cardname === "erwachsene") {
-    setCookie("remcard", "erwachsene", 1);
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    setTimeout(function () {
-      window.location.href = "../../site/praxisprofil.html";
-    }, 200);
-  }
-  else {
-    console.log("Fehler: remcard")
-  }
+
+  // Construct URL and navigate
+  // Path is relative to index.html, which is in the root directory.
+  // script-home.js is in src/js/, so praxisprofil.html in site/ is at ../../site/praxisprofil.html
+  // However, this script is executed in the context of index.html in the root.
+  // So the path should be relative to the root.
+  var targetUrl = "site/praxisprofil.html?topic=" + id;
+  
+  setTimeout(function () {
+    window.location.href = targetUrl;
+  }, 200); // Keep small delay for visual feedback of class change
 }
 
-function cardreset() {
-  setCookie("remcard", "none", 1);
-}
-
-
-/*function quality_tips() {
-  if(getCookie("visits") === null) {
-    setCookie("visits", 1, 14);
-  }
-  let visits = parseInt(getCookie("visits"));
-  setCookie("visits",++visits, 14);
-  if (getCookie("visits") < 6) {
-    document.getElementById("saeuglinge").style.animationName = "slide-seeker";
-  }
-}
-
-function quality_dark_anim() {
-  var isMobile = window.innerWidth <= 890;
-  if(getCookie("dark_everused") === null) {
-    if (isMobile) {
-      var mobilethemebutton = document.getElementById("themebutton-mobile");
-      mobilethemebutton.classList.add("animate__animated", "animate__heartBeat");
-      mobilethemebutton.addEventListener("animationend", function() {
-        mobilethemebutton.classList.remove("animate__animated", "animate__heartBeat");
-      });
-    } else {
-      var themebutton = document.getElementById("themebutton");
-      themebutton.classList.add("animate__animated", "animate__headShake");
-      themebutton.addEventListener("animationend", function() {
-        themebutton.classList.remove("animate__animated", "animate__headShake");
-      });
-    }
-  }
-}*/
+// Removed cardreset() function
+// Removed commented out quality_tips() and quality_dark_anim()

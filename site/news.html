@@ -3,23 +3,30 @@
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://randomwordgenerator.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.youtube.com; connect-src 'self';">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Home | Ergotherapie Küchmeister</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap">
         <link rel="stylesheet" href="../src/css/style.css">
         <link rel="stylesheet" href="../src/css/style-news.css">
         <link rel="shortcut icon" href="../src/img/website/favicon.ico">
     </head>
     <body>
         <span class="cookie-btn" id="cookiebtn">
-            <img src="../src/img/website/cookie.png" alt="cookie" class="cookie-btn-img" id="cookie_popup_img" onclick="cookiePopup()">
+            <img src="../src/img/website/cookie.png" alt="cookie" class="cookie-btn-img" id="cookie_popup_img" onclick="cookiePopup()" role="button" aria-label="Open cookie settings">
             <div class="cookie_text">
               <p>Unsere Website verwendet technisch notwendige
                 <br>Cookies, um Ihre Nutzung der Website zu verbessern.
                 <br>Diese Cookies können nicht deaktiviert werden. </p>
-                <a href="site/cookies.html" style="color: #09B397;">Mehr Infos</a>
+                <a href="cookies.html" class="cookie-info-link">Mehr Infos</a>
             </div>
         </span>
-        <div class="desktop-nav">
+        <nav class="desktop-nav">
             <div class="desktop-nav-content">
                 <img src="../../src/img/website/logo-wide.png" alt="Logo" class="logo">
                 <h1 class="title">ErgoTherapie<br>Michael Küchmeister</h1>
@@ -27,38 +34,37 @@
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="praxisprofil.html">Praxisprofil</a></li>
                     <li><a href="team.html">Team</a></li>
-                    <li><a href="#" style="color: #09B397">News</a></li>
+                    <li><a href="#" class="nav-active">News</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
                     <li><a href="impressum.html">Impressum</a></li>
                 </ul>
                 <div class="mode-switch mode-switch-desktop">
-                    <button onclick="toggleTheme()" class="square-button" id="themebutton"><img id="lightmodeicon" src="../../src/img/website/sonne.png" alt="modeicon"></button>
+                    <button onclick="handleThemeToggle('themebutton', 'lightmodeicon')" class="square-button" id="themebutton" aria-label="Toggle dark mode"><img id="lightmodeicon" src="../../src/img/website/sonne.png" alt="modeicon"></button>
                 </div>
             </div>
-            <div class="mobile-nav-content"> <!--Mobile NAV-->
+            <nav class="mobile-nav-content"> <!--Mobile NAV-->
                 <div class="mobile-nav-buttons">
-                    <div class="mode-switch mode-switch-mobile" style="display: inline-block">
-                        <button onclick="toggleThemeMobile()" class="square-button" id="themebutton-mobile"><img id="lightmodeicon-mobile" src="../../src/img/website/sonne.png" alt="modeicon"></button>
+                    <div class="mode-switch mode-switch-mobile"> {/* style="display: inline-block" removed */}
+                        <button onclick="handleThemeToggle('themebutton-mobile', 'lightmodeicon-mobile')" class="square-button" id="themebutton-mobile" aria-label="Toggle dark mode"><img id="lightmodeicon-mobile" src="../../src/img/website/sonne.png" alt="modeicon"></button>
                     </div>
-                    <div class="menu-drop" style="display: inline-block;">
-                        <button onclick="hamburger()" class="square-button" id="menubutton"><img id="menuicon" src="../../src/img/website/menu.png" alt="menuicon"></button>
+                    <div class="menu-drop"> {/* style="display: inline-block;" removed */}
+                        <button onclick="hamburger()" class="square-button" id="menubutton" aria-label="Toggle navigation menu"><img id="menuicon" src="../../src/img/website/menu.png" alt="menuicon"></button>
                     </div>
                 </div>
                     <ul id="mobilenav">
                         <li><a href="../index.html">Home</a></li>
                         <li><a href="praxisprofil.html">Praxisprofil</a></li>
                         <li><a href="team.html">Team</a></li>
-                        <li><a href="#" style="color: #09B397">News</a></li>
+                        <li><a href="#" class="nav-active">News</a></li>
                         <li><a href="kontakt.html">Kontakt</a></li>
                         <li><a href="impressum.html">Impressum</a></li>
                     </ul>
-                </div>
-            </div> 
-        </div>
-        <div class="site-content">
+                </nav>
+            </nav> 
+        <main class="site-content">
             <h1 class="welcome">Neuigkeiten</h1>
             <div class="container">
-                <div class="box">
+                <article class="box">
                     <a href="articles/article-example.html" class="direct_link_desktop">
                         <img src="../src/img/website/redirect.png" alt="" class="redirect">
                         <p class="direct_p">weiterlesen...</p>
@@ -70,9 +76,9 @@
                         <p class="direct_p_mobile">weiterlesen...</p>
                         <img src="../src/img/website/redirect.png" alt="" class="redirect">
                     </a>
-                </div>
+                </article>
             </div>
-        </div>
+        </main>
     <script src="../src/js/script-news.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </body>

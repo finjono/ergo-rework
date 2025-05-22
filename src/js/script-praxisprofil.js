@@ -63,26 +63,25 @@ function cookiePopup() {
   cookiePopup_img.setAttribute("src", "../src/img/website/" + cookie_img_src + ".png");
 };
 
-
-function toggleTheme() {
-  var themebutton = document.getElementById("themebutton");
+// Theme toggle logic (adapted from script-home.js)
+function handleThemeToggle(themeButtonId, iconId) {
+  var themebutton = document.getElementById(themeButtonId);
+  if (!themebutton) return; 
   if (themebutton.disabled) {
-    return; 
+    return;
   }
-  
-  // temp disable
+
   themebutton.disabled = true;
   setTimeout(function() {
     themebutton.disabled = false;
   }, 1150);
 
-  // Toggle dark theme
   var body = document.querySelector("body");
   var isDarkMode = body.classList.toggle("dark-mode");
   setCookie("darkMode", isDarkMode ? "true" : "false", 365);
 
-  // change img src
-  var img = document.getElementById("lightmodeicon");
+  var img = document.getElementById(iconId);
+  if (!img) return; 
   var bildPfad = img.getAttribute("src");
 
   if (bildPfad.toLowerCase().includes("sonne")) {
@@ -91,94 +90,69 @@ function toggleTheme() {
     bildPfad = "sonne";
   }
 
-  console.log(bildPfad);
-
   img.classList.add("animate__animated", "animate__flip");
   img.addEventListener("animationend", function() {
     img.classList.remove("animate__animated", "animate__flip");
-  });
+  }, { once: true });
 
   setTimeout(function () {
     img.setAttribute("src", "../src/img/website/" + bildPfad + ".png");
   }, 600);
 }
 
-// Check if the user had Dark Mode enabled
+// DOMContentLoaded (initial part for theme and basic listeners)
 document.addEventListener("DOMContentLoaded", function() {
-      // Assuming getCookie() function exists and retrieves the cookie value
-      var isDarkModeCookie = getCookie("darkMode");
-      var isMobile = window.innerWidth <= 890;
+  // Apply initial theme
+  var body = document.querySelector("body");
+  var lightModeIcon = document.getElementById("lightmodeicon");
+  var lightModeIconMobile = document.getElementById("lightmodeicon-mobile");
+  var isDarkModeCookie = getCookie("darkMode");
 
-      if (isDarkModeCookie === "true") {
-        if (isMobile) {
-          toggleThemeMobile();
-        } else {
-          toggleTheme();
-        }
-      } else {
-        if (isMobile) {
-          var mobilethemebutton = document.getElementById("themebutton-mobile");
-          mobilethemebutton.classList.add("animate__animated", "animate__heartBeat");
-          mobilethemebutton.addEventListener("animationend", function() {
-            mobilethemebutton.classList.remove("animate__animated", "animate__heartBeat");
-          });
-        } else {
-          var themebutton = document.getElementById("themebutton");
-          themebutton.classList.add("animate__animated", "animate__headShake");
-          themebutton.addEventListener("animationend", function() {
-            themebutton.classList.remove("animate__animated", "animate__headShake");
-          });
-        }
-      }
+  if (isDarkModeCookie === "true") {
+    body.classList.add("dark-mode");
+    if (lightModeIcon) lightModeIcon.setAttribute("src", "../src/img/website/mond.png");
+    if (lightModeIconMobile) lightModeIconMobile.setAttribute("src", "../src/img/website/mond.png");
+  } else {
+    body.classList.remove("dark-mode"); 
+    if (lightModeIcon) lightModeIcon.setAttribute("src", "../src/img/website/sonne.png");
+    if (lightModeIconMobile) lightModeIconMobile.setAttribute("src", "../src/img/website/sonne.png");
+  }
 
-      cardrem();
-      // quality_tips()
+  // Add event listeners for theme buttons
+  var themeButtonDesktop = document.getElementById("themebutton");
+  if (themeButtonDesktop) {
+    themeButtonDesktop.addEventListener('click', function() {
+      handleThemeToggle("themebutton", "lightmodeicon");
     });
+  }
+  var themeButtonMobile = document.getElementById("themebutton-mobile");
+  if (themeButtonMobile) {
+    themeButtonMobile.addEventListener('click', function() {
+      handleThemeToggle("themebutton-mobile", "lightmodeicon-mobile");
+    });
+  }
 
-
-
-function toggleThemeMobile() {
-  var themebutton = document.getElementById("themebutton-mobile");
-  if (themebutton.disabled) {
-    return; 
+  // Add event listener for cookie popup
+  var cookieBtnImg = document.getElementById("cookie_popup_img");
+  if (cookieBtnImg) {
+    cookieBtnImg.addEventListener('click', cookiePopup);
   }
   
-  // temp disable
-  themebutton.disabled = true;
-  setTimeout(function() {
-    themebutton.disabled = false;
-  }, 1000);
-
-  // Toggle dark theme
-  var body = document.querySelector("body");
-  var isDarkMode = body.classList.toggle("dark-mode");
-  setCookie("darkMode", isDarkMode ? "true" : "false", 365);
-
-  // change img src
-  var img = document.getElementById("lightmodeicon-mobile");
-  var bildPfad = img.getAttribute("src");
-
-  if (bildPfad.toLowerCase().includes("sonne")) {
-    bildPfad = "mond";
-  } else {
-    bildPfad = "sonne";
+  // Add event listener for hamburger menu
+  var menuButton = document.getElementById("menubutton");
+  if (menuButton) {
+    menuButton.addEventListener('click', hamburger);
   }
 
-  img.classList.add("animate__animated", "animate__flip");
-  img.addEventListener("animationend", function() {
-    img.classList.remove("animate__animated", "animate__flip");
-  });
-
-
-  setTimeout(function () {
-    img.setAttribute("src", "../src/img/website/" + bildPfad + ".png");
-  }, 600);
-}
+  // cardrem(); // This will be replaced by URL param logic later
+  // quality_tips()
+});
 
 // Dropdown menu
-
+// (hamburger function remains unchanged for now, ensure image paths are correct: ../src/img/website/)
 function hamburger() {
   var menubutton = document.getElementById("menubutton");
+  if (!menubutton) return;
   if (menubutton.disabled) {
     return; 
   }
@@ -189,8 +163,10 @@ function hamburger() {
   }, 1000);
 
   var img = document.getElementById("menuicon");
+  if (!img) return;
   var bildPfad = img.getAttribute("src");
-  var mobilenav = document.getElementById("mobilenav")
+  var mobilenav = document.getElementById("mobilenav");
+  if (!mobilenav) return;
 
   if (bildPfad.toLowerCase().includes("menu")) {
     bildPfad = "x";
@@ -203,550 +179,149 @@ function hamburger() {
   img.classList.add("animate__animated", "animate__jello");
   img.addEventListener("animationend", function() {
     img.classList.remove("animate__animated", "animate__jello");
-  });
+  }, { once: true });
 
   setTimeout(function () {
     img.setAttribute("src", "../src/img/website/" + bildPfad + ".png");
   }, 300);
 }
 
-// TOPIC FUNCTIONS
+// Global list of topic IDs for validation and iteration
+const allTopicIds = [
+  "saeuglinge", "kleinkinder", "schulkinder", 
+  "praevention", "beratung", "lernwerkstatt", "erwachsene"
+];
 
-function Saeuglinge() {
-  var element = document.getElementById("content-saeuglinge");
-  var current = element.style.display;
+// Generic function to display topic content
+function displayTopicContent(topicId) {
+  const startAlertElement = document.getElementById("startalert");
+  const topicContentContainer = document.getElementById("topic-content");
 
-  setCookie("remcard", "saeuglinge", 1);
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });  
+  if (!allTopicIds.includes(topicId)) {
+    console.warn("Invalid topicId:", topicId);
+    if (startAlertElement) startAlertElement.style.display = "block"; // Or "flex", "grid"
+    if (topicContentContainer) topicContentContainer.style.padding = '3vw'; // Default padding
 
-  if (current == "none") {
-    document.getElementById("content-saeuglinge").style.display = "contents";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("startalert").style.display = "none";
-
-    for (let i = 0; i < document.getElementsByClassName("active-card").length; i++) {
-      document.getElementsByClassName("active-card")[i].classList.remove("active-card");
-    }
-    
-    for (let i = 0; i < document.getElementsByClassName("active-card-dark").length; i++) {
-      document.getElementsByClassName("active-card-dark")[i].classList.remove("active-card-dark");
-    }
-
-    var card = document.getElementById("card_saeuglinge");
-    var isDarkModeCookie = getCookie("darkMode");
-    if (isDarkModeCookie === "true") {
-      card.classList.remove("active-card")
-      card.classList.add("active-card-dark");
-    } else {
-      card.classList.remove("active-card-dark")
-      card.classList.add("active-card");
-    }
-
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '2vw 3vw 7vw 3vw';
-  } 
-}
-
-function Kleinkinder() {
-  var element = document.getElementById("content-kleinkinder");
-  var current = element.style.display;
-
-  setCookie("remcard", "kleinkinder", 1);
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });  
-
-  if(current == "none") {
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "contents";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("startalert").style.display = "none";
-
-    
-
-    for (let i = 0; i < document.getElementsByClassName("active-card").length; i++) {
-      document.getElementsByClassName("active-card")[i].classList.remove("active-card");
-    }
-    
-    for (let i = 0; i < document.getElementsByClassName("active-card-dark").length; i++) {
-      document.getElementsByClassName("active-card-dark")[i].classList.remove("active-card-dark");
-    }
-
-    var card = document.getElementById("card_kleinkinder");
-    var isDarkModeCookie = getCookie("darkMode");
-    if (isDarkModeCookie === "true") {
-      card.classList.remove("active-card")
-      card.classList.add("active-card-dark");
-    } else {
-      card.classList.remove("active-card-dark")
-      card.classList.add("active-card");
-    }
-
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '2vw 3vw 7vw 3vw';
+    allTopicIds.forEach(id => {
+      const contentElement = document.getElementById('content-' + id);
+      if (contentElement) contentElement.style.display = "none";
+      const cardElement = document.getElementById('card_' + id);
+      if (cardElement) cardElement.classList.remove("active-card", "active-card-dark");
+    });
+    return;
   }
-}
 
-function Schulkinder() {
-  var element = document.getElementById("content-schulkinder");
-  var current = element.style.display;
-
-  setCookie("remcard", "schulkinder", 1);
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });  
-
-  if(current == "none") {
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "contents";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("startalert").style.display = "none";
-
-    for (let i = 0; i < document.getElementsByClassName("active-card").length; i++) {
-      document.getElementsByClassName("active-card")[i].classList.remove("active-card");
-    }
-    
-    for (let i = 0; i < document.getElementsByClassName("active-card-dark").length; i++) {
-      document.getElementsByClassName("active-card-dark")[i].classList.remove("active-card-dark");
-    }
-
-    var card = document.getElementById("card_schulkinder");
-    var isDarkModeCookie = getCookie("darkMode");
-    if (isDarkModeCookie === "true") {
-      card.classList.remove("active-card")
-      card.classList.add("active-card-dark");
-    } else {
-      card.classList.remove("active-card-dark")
-      card.classList.add("active-card");
-    }
-
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '2vw 3vw 7vw 3vw';
+  // Hide all topic content items (using the class that will be added to HTML)
+  document.querySelectorAll('.topic-content-item').forEach(item => {
+    item.style.display = "none";
+  });
+  
+  // Show the selected topic content
+  const selectedContentElement = document.getElementById('content-' + topicId);
+  if (selectedContentElement) {
+    selectedContentElement.style.display = "contents";
   }
-}
 
-function Praevention() {
-  var element = document.getElementById("content-praevention");
-  var current = element.style.display;
-
-  setCookie("remcard", "praevention", 1);
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });  
-
-  if(current == "none") {
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "contents";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("startalert").style.display = "none";
-
-    for (let i = 0; i < document.getElementsByClassName("active-card").length; i++) {
-      document.getElementsByClassName("active-card")[i].classList.remove("active-card");
+  // Update active card styling
+  allTopicIds.forEach(id => {
+    const cardElement = document.getElementById('card_' + id);
+    if (cardElement) {
+      cardElement.classList.remove("active-card", "active-card-dark");
     }
-    
-    for (let i = 0; i < document.getElementsByClassName("active-card-dark").length; i++) {
-      document.getElementsByClassName("active-card-dark")[i].classList.remove("active-card-dark");
-    }
+  });
 
-    var card = document.getElementById("card_praevention");
-    var isDarkModeCookie = getCookie("darkMode");
-    if (isDarkModeCookie === "true") {
-      card.classList.remove("active-card")
-      card.classList.add("active-card-dark");
+  const selectedCardElement = document.getElementById('card_' + topicId);
+  if (selectedCardElement) {
+    if (document.body.classList.contains("dark-mode")) {
+      selectedCardElement.classList.add("active-card-dark");
     } else {
-      card.classList.remove("active-card-dark")
-      card.classList.add("active-card");
+      selectedCardElement.classList.add("active-card");
     }
-
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '2vw 3vw 7vw 3vw';
   }
-}
 
-function Beratung() {
-  var element = document.getElementById("content-beratung");
-  var current = element.style.display;
+  if (startAlertElement) startAlertElement.style.display = "none";
+  if (topicContentContainer) topicContentContainer.style.padding = '2vw 3vw 7vw 3vw';
 
-  setCookie("remcard", "beratung", 1);
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });  
-
-  if(current == "none") {
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "contents";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("startalert").style.display = "none";
-
-    for (let i = 0; i < document.getElementsByClassName("active-card").length; i++) {
-      document.getElementsByClassName("active-card")[i].classList.remove("active-card");
-    }
-    
-    for (let i = 0; i < document.getElementsByClassName("active-card-dark").length; i++) {
-      document.getElementsByClassName("active-card-dark")[i].classList.remove("active-card-dark");
-    }
-
-    var card = document.getElementById("card_beratung");
-    var isDarkModeCookie = getCookie("darkMode");
-    if (isDarkModeCookie === "true") {
-      card.classList.remove("active-card")
-      card.classList.add("active-card-dark");
-    } else {
-      card.classList.remove("active-card-dark")
-      card.classList.add("active-card");
-    }
-
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '2vw 3vw 7vw 3vw';
-  }
-}
-
-function Lernwerkstatt() {
-  var element = document.getElementById("content-lernwerkstatt");
-  var current = element.style.display;
-
-  setCookie("remcard", "lernwerkstatt", 1);
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });  
-
-  if(current == "none") {
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "contents";
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("startalert").style.display = "none";
-
-    for (let i = 0; i < document.getElementsByClassName("active-card").length; i++) {
-      document.getElementsByClassName("active-card")[i].classList.remove("active-card");
-    }
-    
-    for (let i = 0; i < document.getElementsByClassName("active-card-dark").length; i++) {
-      document.getElementsByClassName("active-card-dark")[i].classList.remove("active-card-dark");
-    }
-
-    var card = document.getElementById("card_lernwerkstatt");
-    var isDarkModeCookie = getCookie("darkMode");
-    if (isDarkModeCookie === "true") {
-      card.classList.remove("active-card")
-      card.classList.add("active-card-dark");
-    } else {
-      card.classList.remove("active-card-dark")
-      card.classList.add("active-card");
-    }
-
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '2vw 3vw 7vw 3vw';
-  }
-}
-
-function Erwachsene() {
-  var element = document.getElementById("content-erwachsene");
-  var current = element.style.display;
-
-  setCookie("remcard", "erwachsene", 1);
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });  
-
-  if(current == "none") {
-    document.getElementById("content-erwachsene").style.display = "contents";
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    document.getElementById("startalert").style.display = "none";
-
-    for (let i = 0; i < document.getElementsByClassName("active-card").length; i++) {
-      document.getElementsByClassName("active-card")[i].classList.remove("active-card");
-    }
-    
-    for (let i = 0; i < document.getElementsByClassName("active-card-dark").length; i++) {
-      document.getElementsByClassName("active-card-dark")[i].classList.remove("active-card-dark");
-    }
-
-    var card = document.getElementById("card_erwachsene");
-    var isDarkModeCookie = getCookie("darkMode");
-    if (isDarkModeCookie === "true") {
-      card.classList.remove("active-card")
-      card.classList.add("active-card-dark");
-    } else {
-      card.classList.remove("active-card-dark")
-      card.classList.add("active-card");
-    }
-
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '2vw 3vw 7vw 3vw';
-  }
-}
-
-/* scroll */
-/*
-setInterval(function() {
-  var isDarkModeCookie = getCookie("darkMode");
-  body = document.querySelector('body');
-  if (document.body.scrollTop >= 310) {
-    if (isDarkModeCookie === "true") {
-      body.style.background = 'radial-gradient(circle, rgba(77,77,77,1) 0%, rgba(52,52,52,1) 30%, rgba(0,0,0,1) 100%)';
-    } else {
-      body.style.background = 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%)';
-    }
+  const contentHeader = document.getElementById('scrollAnker-' + topicId) || selectedContentElement;
+  if (contentHeader) {
+    // Wait a brief moment for layout to settle, then scroll
+    setTimeout(() => {
+        contentHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   } else {
-    if (isDarkModeCookie === "true") {
-      body.style.background = 'radial-gradient(circle, rgba(9, 43, 94, 0.792) 20%, rgb(0, 0, 0) 100%)';
-    } else {
-      body.style.background = 'radial-gradient(circle,rgba(46, 130, 179, 0.754) 20%, rgb(255, 255, 255) 100%)';
-    }
+    // Fallback scroll, adjust Y value as needed
+    setTimeout(() => {
+        window.scrollTo({ top: window.scrollY + 300, behavior: 'smooth' });
+    }, 50);
   }
-  // console.log(document.body.scrollTop);
-}, 100);*/
+}
 
-function cardrem() {
-  var cardname = getCookie("remcard");
-  var cardelement = document.getElementById("card_" + cardname); // Da praxisprofil.html bei den IDs zusätzlich noch "card_" vorher stehen hat
-  console.log(cardelement);
+// Modified DOMContentLoaded to include URL parsing for topics
+document.addEventListener("DOMContentLoaded", function() {
+  // Apply initial theme
+  var body = document.querySelector("body");
+  var lightModeIcon = document.getElementById("lightmodeicon");
+  var lightModeIconMobile = document.getElementById("lightmodeicon-mobile");
   var isDarkModeCookie = getCookie("darkMode");
 
-  if (cardname === "saeuglinge") {
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("content-saeuglinge").style.display = "contents";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    
-    document.getElementById("startalert").style.display = "none";
-    
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '3vw 3vw 7vw 3vw';
-
-    window.scrollBy({
-      top: 300,
-      behavior: 'smooth'
-    });  
-  }
-  else if (cardname === "kleinkinder") {
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "contents";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    
-    document.getElementById("startalert").style.display = "none";
-    
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '3vw 3vw 7vw 3vw';
-
-    window.scrollBy({
-      top: 300,
-      behavior: 'smooth'
-    });  
-  }
-  else if (cardname === "schulkinder") {
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "contents";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    
-    document.getElementById("startalert").style.display = "none";
-    
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '3vw 3vw 7vw 3vw';
-
-    window.scrollBy({
-      top: 300,
-      behavior: 'smooth'
-    });  
-  }
-  else if (cardname === "praevention") {    
-    if (isDarkModeCookie === "true") {
-    cardelement.classList.remove("active-card")
-    cardelement.classList.add("active-card-dark");
+  if (isDarkModeCookie === "true") {
+    body.classList.add("dark-mode");
+    if (lightModeIcon) lightModeIcon.setAttribute("src", "../src/img/website/mond.png");
+    if (lightModeIconMobile) lightModeIconMobile.setAttribute("src", "../src/img/website/mond.png");
   } else {
-    cardelement.classList.remove("active-card-dark")
-    cardelement.classList.add("active-card");
+    body.classList.remove("dark-mode"); 
+    if (lightModeIcon) lightModeIcon.setAttribute("src", "../src/img/website/sonne.png");
+    if (lightModeIconMobile) lightModeIconMobile.setAttribute("src", "../src/img/website/sonne.png");
+  }
+
+  // Add event listeners for theme buttons
+  var themeButtonDesktop = document.getElementById("themebutton");
+  if (themeButtonDesktop) {
+    themeButtonDesktop.addEventListener('click', function() {
+      handleThemeToggle("themebutton", "lightmodeicon");
+    });
+  }
+  var themeButtonMobile = document.getElementById("themebutton-mobile");
+  if (themeButtonMobile) {
+    themeButtonMobile.addEventListener('click', function() {
+      handleThemeToggle("themebutton-mobile", "lightmodeicon-mobile");
+    });
+  }
+
+  // Add event listener for cookie popup
+  var cookieBtnImg = document.getElementById("cookie_popup_img");
+  if (cookieBtnImg) {
+    cookieBtnImg.addEventListener('click', cookiePopup);
   }
   
-  document.getElementById("content-erwachsene").style.display = "none";
-  document.getElementById("content-saeuglinge").style.display = "none";
-  document.getElementById("content-kleinkinder").style.display = "none";
-  document.getElementById("content-schulkinder").style.display = "none";
-  document.getElementById("content-praevention").style.display = "contents";
-  document.getElementById("content-beratung").style.display = "none";
-  document.getElementById("content-lernwerkstatt").style.display = "none";
-  
-  document.getElementById("startalert").style.display = "none";
-  
-  var topic_content = document.getElementById("topic-content");
-  topic_content.style.padding = '3vw 3vw 7vw 3vw';
+  // Add event listener for hamburger menu
+  var menuButton = document.getElementById("menubutton");
+  if (menuButton) {
+    menuButton.addEventListener('click', hamburger);
+  }
 
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });  
-}
-  else if (cardname === "beratung") {
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
+  // Topic display logic from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const topic = urlParams.get('topic');
+  const startAlertElement = document.getElementById("startalert");
+  const topicContentContainer = document.getElementById("topic-content");
+
+  if (topic && allTopicIds.includes(topic)) {
+    displayTopicContent(topic);
+  } else {
+    // Default state: show startalert, hide all topic contents
+    if (startAlertElement) startAlertElement.style.display = "block"; 
+    allTopicIds.forEach(id => {
+      const contentElement = document.getElementById('content-' + id);
+      if (contentElement) contentElement.style.display = "none";
+    });
+    if (topicContentContainer) {
+      topicContentContainer.style.padding = '3vw'; 
     }
-    
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "contents";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    
-    document.getElementById("startalert").style.display = "none";
-    
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '3vw 3vw 7vw 3vw';
+  }
+  // Removed quality_tips() call
+});
 
-    window.scrollBy({
-      top: 300,
-      behavior: 'smooth'
-    });  
-  }
-  else if (cardname === "lernwerkstatt") {
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    document.getElementById("content-erwachsene").style.display = "none";
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "contents";
-    
-    document.getElementById("startalert").style.display = "none";
-    
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '3vw 3vw 7vw 3vw';
-
-    window.scrollBy({
-      top: 300,
-      behavior: 'smooth'
-    });  
-  }
-  else if (cardname === "erwachsene") {
-    if (isDarkModeCookie === "true") {
-      cardelement.classList.remove("active-card")
-      cardelement.classList.add("active-card-dark");
-    } else {
-      cardelement.classList.remove("active-card-dark")
-      cardelement.classList.add("active-card");
-    }
-    
-    document.getElementById("content-erwachsene").style.display = "contents";
-    document.getElementById("content-saeuglinge").style.display = "none";
-    document.getElementById("content-kleinkinder").style.display = "none";
-    document.getElementById("content-schulkinder").style.display = "none";
-    document.getElementById("content-praevention").style.display = "none";
-    document.getElementById("content-beratung").style.display = "none";
-    document.getElementById("content-lernwerkstatt").style.display = "none";
-    
-    document.getElementById("startalert").style.display = "none";
-    
-    var topic_content = document.getElementById("topic-content");
-    topic_content.style.padding = '3vw 3vw 7vw 3vw';
-
-    window.scrollBy({
-      top: 300,
-      behavior: 'smooth'
-    });  
-  }
-  else {
-    console.log("Fehler: remcard / Reset")
-  }
-}
-
-function cardreset() {
-  setCookie("remcard", "none", 1);
-}
-
-/*function quality_tips() {
-  if(getCookie("visits") === null) {
-    setCookie("visits", 1, 14);
-  }
-  let visits = parseInt(getCookie("visits"));
-  setCookie("visits",++visits, 14);
-  if (getCookie("visits") < 6) {
-    document.getElementById("card_saeuglinge").style.animationName = "slide-seeker";
-  }
-}*/
+// Removed old topic functions (Saeuglinge, Kleinkinder, etc.)
+// Removed cardrem() and cardreset() functions
+// Removed commented out /* scroll */ and /* quality_tips() */

@@ -23,6 +23,13 @@
   user-select: none;
 }
 
+.welcome .underline span.welcome-highlight {
+  background-color: #09B397;
+  color: #FFFFFF; 
+  padding: 0.1em 0.3em; 
+  border-radius: 3px;
+}
+
 .about_card_container { 
   display: inline-flex;
   align-items: center;  
@@ -179,6 +186,21 @@
   justify-content: center;
 }
 
+#saeuglinge { z-index: 26; }
+#kleinkinder { z-index: 25; }
+#schulkinder { z-index: 24; }
+#praevention { z-index: 23; }
+#beratung { z-index: 22; }
+#lernwerkstatt { z-index: 21; }
+#erwachsene { z-index: 20; }
+
+.profil_img_box#beratung .profil_inside_container img {
+  width: 63px;
+  padding-left: 9px;
+  padding-right: 9px;
+  /* Overrides general .profil_container img if more specific */
+}
+
 .profil_img_box:hover{
   transform: scale(1.1);
   box-shadow: rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
@@ -256,38 +278,4 @@ body.dark-mode .about_card:hover{
   box-shadow: #ffffff 0px 0px 0px 2.5px;
 }
 /* -------------------------- Mobile Mode ------------------------*/
-
-
-
-
-@media only screen and (max-width: 450px) {
-  .more-btn{
-    font-size: 38px;
-    position: relative;
-    margin-top: 70px;
-    margin-bottom: 50px;
-  }
-  .more-img {
-    vertical-align: middle;
-    padding-right: 20px;
-    padding-left: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 40px;
-  }
-  .more-text {
-    padding-right: 25px;
-    padding-left: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: "Inter", sans-serif;
-  }
-  
-}
-
-@media only screen and (max-width: 380px) {
-  .more-btn{
-    margin-top: 25px;
-    margin-bottom: 50px;
-  }
-}
+/* Removed unused .more-btn, .more-img, .more-text rules */

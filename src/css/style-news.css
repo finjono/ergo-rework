@@ -59,15 +59,7 @@
     transition: all 0.5s ease;
 }
 
-.tag{
-    margin:0;
-}
-
-.tag span{
-    background: #f79358;
-    padding: 5px 10px 5px 10px;
-    border-radius: 25px;
-}
+/* Removed unused .tag and .tag span rules */
 
 .article_image{
     position: absolute;

@@ -132,18 +132,10 @@
   text-decoration: underline;
 }
 
-.inline-img {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
-  justify-content: flex-start;
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
+/* 
+  Base .inline-img, .inline-img-reverse, .numberlist rules moved to style.css.
+  Page-specific styling for images within .inline-img and .inline-img-reverse remains here.
+*/
 .inline-img img {
   margin-right: 20px;
   width: 150px;
@@ -152,45 +144,12 @@
   border-radius: 50%;
 }
 
-.inline-img-reverse{
-  align-items: center;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  height: 100%;
-  justify-content: flex-start;
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 20px; 
-}
-
 .inline-img-reverse img {
   margin-right: 20px;
   width: 150px;
   height: auto;
   max-width: 100%;
   border-radius: 30%;
-}
-
-.numberlist ol {
-  list-style: none;
-  counter-reset: item;
-}
-
-.numberlist li {
-  counter-increment: item;
-  margin-bottom: 5px
-}
-
-.numberlist ol li::before {
-  margin-right: 10px;
-  content: counter(item);
-  background: #0064d7;
-  border-radius: 100%;
-  color: white;
-  width: 1.2em;
-  text-align: center;
-  display: inline-block;
 }
 
 /* ------------------------------------------------ dark mode ------------------------------------------------ */
@@ -224,21 +183,14 @@ body.dark-mode #topic-content{
 
 /* -------------------------- Mobile Mode ------------------------*/
 @media only screen and (max-width: 890px) {
-  .starttitle{
-    padding-top: 120px;
-    font-size: 50px;
-  }
+  /* .starttitle rule removed */
   .topics-startalert{
     font-size: 30px;
   }
 }
 
 @media only screen and (max-width: 380px) {
-  .starttitle{
-    font-size: 50px;
-    padding-top: 70px;
-    margin-bottom: 15px;
-  }
+  /* .starttitle rule removed */
 
   .topic-content-header{
     font-size: 28px !important;

@@ -1,17 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); /*font-family: 'Roboto', sans-serif;
-*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap'); /*font-family: 'Varela', sans-serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); /* font-family: "Inter", sans-serif; NOTE: Normal font*/
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap'); /* font-family: "Nunito", sans-serif; NOTE: rounded normal font*/ 
-
+/* Google Font @import rules removed, fonts are now linked in HTML files. */
 
 html, body{
     margin: 0;
     padding: 0;
     height: 100%;
     background: rgb(255, 255, 255);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9febc2",endColorstr="#ffffff",GradientType=1);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -38,14 +31,13 @@ html, body{
   body{
     padding-top: 130px;
   }
-/*
-  body{
-    background: radial-gradient(circle,rgba(166, 230, 255, 0.754) 20%, rgb(255, 255, 255) 100%);
-  }
 
-    background: -moz-radial-gradient(circle, rgba(221, 161, 94, 0.754) 20%, rgb(252, 254, 255) 100%);
-    background: -webkit-radial-gradient(circle, rgba(46, 130, 179, 0.754) 20%, rgb(248, 248, 248) 100%);*/
+.cookie_text a.cookie-info-link {
+  color: #09B397;
+  text-decoration: underline;
+}
 
+/* Commented out alternative body backgrounds removed */
   /* old green: hsla(170, 90%, 37%, 1)*/
   @media screen and (prefers-reduced-motion: no-preference) {
   html {
@@ -127,11 +119,7 @@ html, body{
   padding-left: 20px;
 }
 
-.title-name{
-  color: #09B397;
-  font-weight: bold;
-  position: relative;
-}
+/* Removed unused .title-name rule */
 
 .desktop-nav-content ul {
   list-style-type: none;
@@ -153,6 +141,11 @@ html, body{
   transition: all 0.5s ease;
   border-radius: 10px;
   font-size: 22px;
+}
+
+.desktop-nav-content li a.nav-active {
+  color: #09B397;
+  /* font-weight: bold; */ /* Example: if you want bold active links */
 }
 
 .desktop-nav-content li a:hover {
@@ -205,11 +198,13 @@ html, body{
 
 .mode-switch-mobile{
   float: left;
+  display: inline-block;
   padding-bottom: 20px;
 }
 
 .menu-drop {
   float: right;
+  display: inline-block;
   padding-bottom: 20px;
 }
 
@@ -235,6 +230,10 @@ html, body{
   border-radius: 10px;
 }
 
+.mobile-nav-content li a.nav-active {
+  color: #09B397;
+}
+
 .welcome{
   color:#272424;
   font-size: 4rem;
@@ -249,15 +248,7 @@ html, body{
   text-align: center;
 }
 
-.starttitle{
-  color:#272424;
-  font-size: 70px;
-  padding-top: 55px;
-  padding-right: 5vw;
-  padding-left: 5vw;
-  margin-bottom: 0px;
-  transition: all 0.5s ease;
-}
+/* Removed unused .starttitle rule */
 
 /* -------------------------- Dark Mode ------------------------------ */
 
@@ -270,15 +261,7 @@ body.dark-mode {
 body.dark-mode .site-content{
   background: rgb(40, 43, 41);;
 }
-/*save vor v2: 
-background: radial-gradient(circle, rgba(9, 43, 94, 0.792) 20%, rgb(0, 0, 0) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#09b397", endColorstr="#FFFFFF", GradientType=1 );
-
-old green: hsla(170, 90%, 23%, 1)
-
-  background-color: #000000;
-  background: radial-gradient(circle, rgba(188, 108, 37, 0.792) 20%, rgb(0, 0, 0) 100%);
-  background: -moz-radial-gradient(circle, rgba(188, 108, 37, 0.792) 20%, rgb(0, 0, 0) 100%);*/
+/* Commented out alternative dark mode backgrounds removed */
 
 body.dark-mode .welcome{
   color: #FFFFFF;
@@ -309,8 +292,16 @@ body.dark-mode .desktop-nav-content li a{
   color: rgb(255, 255, 255);
 }
 
+body.dark-mode .desktop-nav-content li a.nav-active {
+  color: #09B397; /* Adjust if needed for dark mode contrast */
+}
+
 body.dark-mode .mobile-nav-content li a{
   color: rgb(255, 255, 255);
+}
+
+body.dark-mode .mobile-nav-content li a.nav-active {
+  color: #09B397; /* Adjust if needed for dark mode contrast */
 }
 
 body.dark-mode .desktop-nav-content li a:hover {
@@ -321,6 +312,82 @@ body.dark-mode .desktop-nav-content li a:hover {
 body.dark-mode .about_box{
   background: rgb(40, 43, 41);
 }
+
+/* Common .content block styling for simple text pages */
+.content{
+    text-align: left;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 50px;
+    border-radius: 25px;
+    padding: 2vw 5vw 2vw 5vw;
+    background-color: #97979733; /* Consider if this background should be default or page-specific */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 25px; /* Consider if this shadow should be default */
+    margin-bottom: 50px;
+    overflow-wrap: break-word;
+}
+  
+.content p, .content li{ /* Combined p and li for shared properties */
+    font-size: 19px;
+    line-height: 25px;
+}
+  
+.content h2{
+    font-size: 25px;
+    margin-top: 60px;
+    text-decoration: underline;
+}
+/* End Common .content block styling */
+
+/* Shared utility classes for inline images and number lists */
+.inline-img, .inline-img-reverse {
+  display: flex;
+  align-items: center;
+  /* height: 100%; Consider if 100% height is always needed or if auto/min-height is better */
+  justify-content: flex-start;
+  border-radius: 15px; /* This might be too specific for a global class, pages can override */
+  padding: 20px; /* This might be too specific for a global class, pages can override */
+  margin-bottom: 20px; /* This might be too specific for a global class, pages can override */
+}
+
+.inline-img {
+  flex-direction: row;
+}
+
+.inline-img-reverse {
+  flex-direction: row-reverse;
+}
+
+/* Apply to li within these containers if no bullets are desired universally */
+.inline-img li, .inline-img-reverse li {
+  list-style-type: none;
+}
+
+.numberlist ol {
+  list-style: none;
+  counter-reset: item;
+  padding-left: 0; 
+}
+
+.numberlist li {
+  counter-increment: item;
+  margin-bottom: 5px;
+  /* General li styling like font-size should be handled by page-specific or body css */
+}
+
+.numberlist ol li::before {
+  margin-right: 10px;
+  content: counter(item);
+  background: #0064d7; /* This color is specific; might be better in page-specific CSS if it changes */
+  border-radius: 100%;
+  color: white;
+  width: 1.2em; /* Or use a fixed px value if font-size varies too much */
+  height: 1.2em; /* Make it a circle */
+  line-height: 1.2em; /* Vertically center the number */
+  text-align: center;
+  display: inline-block;
+}
+/* End Shared utility classes */
 
 /* -------------------------- Mobile Mode ------------------------*/
 
