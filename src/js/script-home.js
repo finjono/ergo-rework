@@ -657,8 +657,14 @@ document.querySelectorAll('.profil_img_box').forEach(card => {
       const rotateX = y / (height / -2) * 22;
       const rotateY = -x / (width / -2) * 22;
 
+      var isDarkModeCookie = getCookie("darkMode");
+
       card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      card.style.boxShadow = `${-rotateY * 1}px ${rotateX * 1}px 20px rgba(0,0,0,0.45)`;
+      if (isDarkModeCookie === "true") {
+        card.style.boxShadow = `${-rotateY * 1}px ${rotateX * 1}px 20px rgba(255, 255, 255, 0.55)`;
+      } else {
+        card.style.boxShadow = `${-rotateY * 1}px ${rotateX * 1}px 20px rgba(0,0,0,0.45)`;
+    }
     });
   });
 
