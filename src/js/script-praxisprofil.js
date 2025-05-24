@@ -110,29 +110,34 @@ document.addEventListener("DOMContentLoaded", function() {
       var isMobile = window.innerWidth <= 890;
 
       if (isDarkModeCookie === "true") {
+        document.documentElement.classList.add('no-transition');
+        console.log("Transition added");
         if (isMobile) {
           toggleThemeMobile();
         } else {
           toggleTheme();
         }
+        setTimeout(() => {
+          document.documentElement.classList.remove('no-transition');
+          console.log("Transition removed");
+        }, 300); 
       } else {
-        if (isMobile) {
-          var mobilethemebutton = document.getElementById("themebutton-mobile");
-          mobilethemebutton.classList.add("animate__animated", "animate__heartBeat");
-          mobilethemebutton.addEventListener("animationend", function() {
-            mobilethemebutton.classList.remove("animate__animated", "animate__heartBeat");
-          });
-        } else {
-          var themebutton = document.getElementById("themebutton");
-          themebutton.classList.add("animate__animated", "animate__headShake");
-          themebutton.addEventListener("animationend", function() {
-            themebutton.classList.remove("animate__animated", "animate__headShake");
-          });
+          if (isMobile) {
+            var mobilethemebutton = document.getElementById("themebutton-mobile");
+            mobilethemebutton.classList.add("animate__animated", "animate__heartBeat");
+            mobilethemebutton.addEventListener("animationend", function() {
+              mobilethemebutton.classList.remove("animate__animated", "animate__heartBeat");
+            });
+          } else {
+            var themebutton = document.getElementById("themebutton");
+            themebutton.classList.add("animate__animated", "animate__headShake");
+            themebutton.addEventListener("animationend", function() {
+              themebutton.classList.remove("animate__animated", "animate__headShake");
+            });
+          }
         }
-      }
 
-     //cardrem();
-      // quality_tips()
+      //quality_tips()
     });
 
 
