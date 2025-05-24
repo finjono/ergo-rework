@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
 
-      cardrem();
+     //cardrem();
       // quality_tips()
     });
 

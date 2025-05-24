@@ -1,55 +1,107 @@
-.box{
-    padding: 5px;
-    width: 240px;
-    height: 360px;
-    text-align: center;
-    margin: 20px;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background: #ffffffd5;
-    transition: all 0.5s ease;
-  }
-  
-  .box svg{
-    padding-top: 5px;
-  }
-  
-  h2{
-    margin-top: 5px;
-    margin-bottom:25px;
-  }
-  
-  .box p{
-    margin-left:10px;
-    margin-right:10px;
-    line-height:20px;
-  }
-  
-  .container{
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center; /*space-evenly*/
-    margin-top: 50px;
-    margin-bottom:50px;
-  }
-
-.tag{
-    margin:0;
+.box {
+  padding: 5px;
+  width: 240px;
+  height: 360px;
+  text-align: center;
+  margin: 20px;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #212529;
+  position: relative;
+  overflow: hidden;
 }
 
-.tag span{
-    padding: 5px 10px 5px 10px;
-    border-radius: 25px;
+.box .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/website/mesh-1.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
 }
 
-.tag_therapy span{
-  background: #f79358;
+.box > *:not(.bg) {
+  position: relative;
+  z-index: 1;
 }
 
-.tag_rezeption span{
-  background: #096a77;
+.box svg {
+  backdrop-filter: blur(5px);
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.7));
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 15px auto;
+  margin-top: 20px;
 }
 
-body.dark-mode .box{
-  background: #00000042;
+h2 {
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+.box p:not([class*="tag"]){
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  line-height: 20px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.178);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 10px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.box h2 {
+  color: inherit;
+}
+
+.container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.tag {
+  margin: 0;
+}
+
+.tag span {
+  padding: 5px 10px;
+  border-radius: 25px;
+  background: rgba(52, 73, 94, 0.85);
+  color: #ffffff;
+  backdrop-filter: blur(5px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+              rgba(0, 0, 0, 0.12) 0px -12px 30px,
+              rgba(0, 0, 0, 0.12) 0px 4px 6px,
+              rgba(0, 0, 0, 0.17) 0px 12px 13px,
+              rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+body.dark-mode .box {
+  background-color: rgba(40, 43, 48, 0.92);
+  color: #f8f9fa;
+}
+
+body.dark-mode .box h2,
+body.dark-mode .box p {
+  color: inherit;
+}
+
+body.dark-mode .tag span {
+  background: rgba(189, 195, 199, 0.85);
+  color: #212529;
+}
+
+body.dark-mode .box .bg{
+    filter: brightness(50%);
 }

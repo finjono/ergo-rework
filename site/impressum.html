@@ -1,8 +1,25 @@
 <!doctype html>
 <html lang="de-DE">
     <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script>
+            document.documentElement.classList.add('no-transition');
+            document.addEventListener('DOMContentLoaded', () => {
+                const siteContent = document.querySelector('.site-content');
+                if (siteContent) {
+                    siteContent.style.opacity = '0';
+                }
+
+                 setTimeout(() => {
+                 const siteContent = document.querySelector('.site-content');
+                 if (siteContent) {
+                     siteContent.style.opacity = '1';
+                     console.log("Site content loaded");
+                 }
+             }, 300);
+            });
+        </script>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Home | Ergotherapie Küchmeister</title>
         <link rel="stylesheet" href="../src/css/style.css">

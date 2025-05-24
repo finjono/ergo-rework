@@ -104,18 +104,24 @@ function setCookie(name, value, days) {
   }
   
   // Check if the user had Dark Mode enabled
-  document.addEventListener("DOMContentLoaded", function() {
-        // Assuming getCookie() function exists and retrieves the cookie value
-        var isDarkModeCookie = getCookie("darkMode");
-        var isMobile = window.innerWidth <= 890;
-  
-        if (isDarkModeCookie === "true") {
-          if (isMobile) {
-            toggleThemeMobile();
-          } else {
-            toggleTheme();
-          }
+document.addEventListener("DOMContentLoaded", function() {
+      // Assuming getCookie() function exists and retrieves the cookie value
+      var isDarkModeCookie = getCookie("darkMode");
+      var isMobile = window.innerWidth <= 890;
+
+      if (isDarkModeCookie === "true") {
+        document.documentElement.classList.add('no-transition');
+        console.log("Transition added");
+        if (isMobile) {
+          toggleThemeMobile();
         } else {
+          toggleTheme();
+        }
+        setTimeout(() => {
+          document.documentElement.classList.remove('no-transition');
+          console.log("Transition removed");
+        }, 300); 
+      } else {
           if (isMobile) {
             var mobilethemebutton = document.getElementById("themebutton-mobile");
             mobilethemebutton.classList.add("animate__animated", "animate__heartBeat");
@@ -130,9 +136,9 @@ function setCookie(name, value, days) {
             });
           }
         }
-  
-        cardrem();
-      });
+
+      //quality_tips()
+    });
   
   
   

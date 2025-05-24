@@ -36,7 +36,6 @@
     right: 0;
     text-decoration: none;
     color: #000000;
-    transition: all 0.5s ease;
     border-top-right-radius: 25px;
     border-left: #000000 solid;
 }
@@ -56,7 +55,6 @@
     transform: translate(-50%, -50%);
     max-height: 50%;
     max-width: 100%;
-    transition: all 0.5s ease;
 }
 
 .tag{
@@ -103,7 +101,6 @@
         background-color: #bbd8e0;
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
-        transition: all 0.5s ease;
         
     }
     .direct_link_desktop{

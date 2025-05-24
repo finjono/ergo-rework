@@ -21,6 +21,10 @@ html, body{
     color: #050505;
   }
 
+html.no-transition * {
+  transition: none !important;
+}
+
   body *::selection { 
     background-color: #09B397; 
   }
@@ -55,6 +59,11 @@ html, body{
 
 .site-content{
   min-height: 100vh;
+  transition: opacity 1s ease; 
+}
+
+.site-content.is-loaded {
+  opacity: 1;
 }
 
 /* -------------------------------- Cookies -------------------------------*/
