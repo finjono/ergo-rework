@@ -289,3 +289,9 @@ body.dark-mode .about_card:hover{
     margin-bottom: 50px;
   }
 }
+
+@media only screen and (max-height: 900px) {
+  .about_box{
+    top: 62%;
+  }
+}
