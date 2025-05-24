@@ -19,6 +19,9 @@ html, body{
     -webkit-tap-highlight-color: transparent;
     font-family: "Varela", sans-serif;
     color: #050505;
+    overflow-wrap: break-word !important;
+    hyphens: manual !important;
+
   }
 
 html.no-transition * {
