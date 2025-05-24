@@ -117,10 +117,6 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
           toggleTheme();
         }
-        setTimeout(() => {
-          document.documentElement.classList.remove('no-transition');
-          console.log("Transition removed");
-        }, 300); 
       } else {
           if (isMobile) {
             var mobilethemebutton = document.getElementById("themebutton-mobile");
@@ -136,6 +132,10 @@ document.addEventListener("DOMContentLoaded", function() {
             });
           }
         }
+        setTimeout(() => {
+          document.documentElement.classList.remove('no-transition');
+          console.log("Transition removed");
+        }, 300); 
 
       //quality_tips()
     });
