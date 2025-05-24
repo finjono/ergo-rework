@@ -167,6 +167,10 @@ html.no-transition * {
   font-size: 22px;
 }
 
+.desktop-nav a{
+  color:#000000
+}
+
 .desktop-nav-content li a:hover {
   background-color: rgba(9, 179, 151, 0.273);
   box-shadow: 0 4px 10px rgba(9, 179, 151, 0.273);
@@ -277,6 +281,10 @@ body.dark-mode {
   color:#f6f5fa;
   background: rgb(40, 43, 41);
   background-repeat: repeat;
+}
+
+body.dark-mode .desktop-nav a{
+  color:#ffffff
 }
 
 body.dark-mode .site-content{
