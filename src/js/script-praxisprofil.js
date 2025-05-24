@@ -105,6 +105,7 @@ function toggleTheme() {
 
 // Check if the user had Dark Mode enabled
 document.addEventListener("DOMContentLoaded", function() {
+      cardrem(); 
       // Assuming getCookie() function exists and retrieves the cookie value
       var isDarkModeCookie = getCookie("darkMode");
       var isMobile = window.innerWidth <= 890;
