@@ -140,10 +140,6 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
           toggleTheme();
         }
-        setTimeout(() => {
-          document.documentElement.classList.remove('no-transition');
-          console.log("Transition removed");
-        }, 300); 
       } else {
           if (isMobile) {
             var mobilethemebutton = document.getElementById("themebutton-mobile");
@@ -159,6 +155,10 @@ document.addEventListener("DOMContentLoaded", function() {
             });
           }
         }
+        setTimeout(() => {
+          document.documentElement.classList.remove('no-transition');
+          console.log("Transition removed");
+        }, 300); 
 
       //quality_tips()
     });
@@ -638,3 +638,32 @@ function quality_dark_anim() {
     }
   }
 }*/
+
+document.querySelectorAll('.profil_img_box').forEach(card => {
+  let animationFrame;
+
+  const originalShadow = card.style.boxShadow;
+
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
+  });
+
+  card.addEventListener('mousemove', e => {
+    cancelAnimationFrame(animationFrame);
+    animationFrame = requestAnimationFrame(() => {
+      const { left, top, width, height } = card.getBoundingClientRect();
+      const x = e.clientX - left - width / 2;
+      const y = e.clientY - top - height / 2;
+      const rotateX = y / (height / -2) * 22;
+      const rotateY = -x / (width / -2) * 22;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      card.style.boxShadow = `${-rotateY * 1}px ${rotateX * 1}px 20px rgba(0,0,0,0.45)`;
+    });
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateX(0) rotateY(0)';
+    card.style.boxShadow = originalShadow;
+  });
+});

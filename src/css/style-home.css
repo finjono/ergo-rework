@@ -167,39 +167,40 @@
   height: auto;
   width: 80vw;
   max-width: 200px;
-  min-width: 190px; 
+  min-width: 190px;
   cursor: pointer;
   margin: 20px;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 0px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+              rgba(6, 24, 44, 0.65) 0px 0px 6px -1px,
+              rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   text-align: center;
-  transition: all 0.5s ease;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
 }
 
-.profil_img_box:hover{
-  transform: scale(1.1);
-  box-shadow: rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+.profil_img_box:hover {
   backdrop-filter: blur(10px);
-  background-color: #ffffff9e;
+  transform-style: preserve-3d;
 }
 
-#saeuglinge:hover{
-  box-shadow: #37baee 0px 0px 0px 2.5px;
+/*#saeuglinge:hover{
+  box-shadow: #37baee 0px 0px 0px 3px;
 }
 
 #kleinkinder:hover{
-  box-shadow: #93be21 0px 0px 0px 2.5px;
+  box-shadow: #93be21 0px 0px 0px 3px;
 }
 
 #schulkinder:hover{
-  box-shadow: #38b7c0 0px 0px 0px 2.5px;
+  box-shadow: #38b7c0 0px 0px 0px 3px;
 }
 
 #praevention:hover{
-  box-shadow: #1c9cd6 0px 0px 0px 2.5px;
+  box-shadow: #1c9cd6 0px 0px 0px 3px;
 }
 
 #beratung:hover{
@@ -211,8 +212,8 @@
 }
 
 #erwachsene:hover{
-  box-shadow: #5d5d9f 0px 0px 0px 2.5px;
-}
+  box-shadow: #5d5d9f 0px 0px 0px 3px;
+}*/
 
 /* -------------------------- Dark Mode ------------------------------ */
 body.dark-mode .welcome{
@@ -229,10 +230,7 @@ body.dark-mode .profil_img_box a{
 }
 
 body.dark-mode .profil_img_box:hover{
-  transform: scale(1.1);
-  margin-right: 60px;
-  margin-left: 40px;
-  box-shadow: rgba(231, 231, 231, 1) 0px 0px 0px 2.5px, rgba(255, 255, 255, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  box-shadow: rgba(231, 231, 231, 1) 0px 0px 0px 3px, rgba(255, 255, 255, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 body.dark-mode .imgbox_lightup{
