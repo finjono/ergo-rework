@@ -18,7 +18,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../img/website/mesh-1.png);
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -37,6 +36,30 @@
   display: block;
   margin: 0 auto 15px auto;
   margin-top: 20px;
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  overflow: hidden; 
+}
+
+.team_michael {
+  background-image: url('../img/team/team-michael.png');
+}
+
+.team_conni {
+  background-image: url('../img/team/team-conni.png');
+}
+
+.team_indra {
+  background-image: url('../img/team/team-indra.png');
+}
+
+.team_jana {
+  background-image: url('../img/team/team-jana.png');
+}
+
+.team_matthias {
+  background-image: url('../img/team/team-matthias.png');
 }
 
 h2 {
@@ -49,7 +72,7 @@ h2 {
   margin-right: 10px;
   margin-top: 20px;
   line-height: 20px;
-  color: #ffffff;
+  color: #000000;
   background-color: rgba(0, 0, 0, 0.178);
   backdrop-filter: blur(5px);
   border-radius: 15px;
