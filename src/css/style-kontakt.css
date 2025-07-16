@@ -87,6 +87,8 @@
     font-size: 20px;
     text-decoration: none;
     color: rgb(0, 0, 0);
+    transition: all 0.3s ease-in-out;
+
   }
 
   .maps_button img {
@@ -99,7 +101,7 @@
   .maps_button:hover{
     transform: scale(1.05);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  }
+}
 
   .inline_icon {
     display: flex;
